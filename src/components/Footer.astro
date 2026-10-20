@@ -1,6 +1,13 @@
 ---
+import { profile } from '../data/profile';
 const year = new Date().getFullYear();
 ---
 <footer class="footer">
-  <p>© {year} Mélanie Roy — Nantes et alentours</p>
+  <div class="footer__inner">
+    <p class="footer__copy">© {year} {profile.name} — {profile.location}</p>
+    <nav class="footer__links" aria-label="Liens réseaux">
+      <a href={profile.github} rel="noopener noreferrer" target="_blank" aria-label="GitHub">GitHub</a>
+      <a href={profile.linkedin} rel="noopener noreferrer" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+    </nav>
+  </div>
 </footer>

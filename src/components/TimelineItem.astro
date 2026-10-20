@@ -8,22 +8,45 @@ interface Props {
 
 const { entry, index } = Astro.props;
 const side = index % 2 === 0 ? 'left' : 'right';
+
+// Map entry to visual phase for accent-color storytelling
+const startYear = parseInt(entry.start, 10);
+let phase: string;
+if (entry.category === 'engagement') {
+  phase = 'entreprise';
+} else if (entry.category === 'certification') {
+  phase = 'test';
+} else if (startYear >= 2025) {
+  phase = 'dev';
+} else if (startYear >= 2024) {
+  phase = 'test';
+} else {
+  phase = 'medical';
+}
 ---
 <article
   class={`timeline-item timeline-item--${side} timeline-item--${entry.category}`}
   data-index={index}
+  data-phase={phase}
+  role="listitem"
   aria-label={`${entry.title} — ${entry.org}`}
 >
-  <time class="timeline-item__year">{entry.start}</time>
   <div class="timeline-item__content">
+    <div class="timeline-item__meta">
+      <time class="timeline-item__year" datetime={entry.start}>{entry.start}</time>
+      {entry.end && <span class="timeline-item__year-end"> – {entry.end}</span>}
+    </div>
     <h3 class="timeline-item__title">{entry.title}</h3>
-    <p class="timeline-item__org">{entry.org}{entry.place ? ` · ${entry.place}` : ''}</p>
+    <p class="timeline-item__org">
+      {entry.org}{entry.place ? ` · ${entry.place}` : ''}
+    </p>
     <p class="timeline-item__punchline">{entry.punchline}</p>
     <ul class="timeline-item__bullets" role="list">
       {entry.bullets.map((b) => <li>{b}</li>)}
     </ul>
-    <ul class="timeline-item__tags" role="list" aria-label="Technologies">
+    <ul class="timeline-item__tags" role="list" aria-label="Technologies et compétences">
       {entry.tags.map((t) => <li class="tag">{t}</li>)}
     </ul>
   </div>
+  <div class="timeline-item__dot" aria-hidden="true"></div>
 </article>

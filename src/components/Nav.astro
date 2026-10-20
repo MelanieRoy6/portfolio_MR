@@ -1,10 +1,73 @@
 ---
 ---
 <nav class="nav" aria-label="Navigation principale">
-  <a href="/" class="nav__logo" aria-label="Accueil">MR</a>
-  <ul class="nav__links" role="list">
-    <li><a href="#parcours">Parcours</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <a href="/" class="nav__logo" aria-label="Accueil — Mélanie Roy">
+    <img
+      src="/favicon.svg"
+      alt="Mélanie Roy"
+      width="40"
+      height="40"
+      class="nav__logo-img"
+    />
+  </a>
+
+  <button
+    class="nav__toggle"
+    aria-expanded="false"
+    aria-controls="nav-menu"
+    aria-label="Ouvrir le menu"
+    type="button"
+  >
+    <span class="nav__toggle-bar" aria-hidden="true"></span>
+    <span class="nav__toggle-bar" aria-hidden="true"></span>
+    <span class="nav__toggle-bar" aria-hidden="true"></span>
+  </button>
+
+  <ul class="nav__links" id="nav-menu" role="list">
+    <li><a href="#parcours" class="nav__link">Parcours</a></li>
+    <li><a href="#competences" class="nav__link">Compétences</a></li>
+    <li><a href="#contact" class="nav__link">Contact</a></li>
   </ul>
 </nav>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav__toggle');
+  const menu = document.getElementById('nav-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.classList.toggle('is-open', open);
+    });
+
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Highlight active section link on scroll
+  const sections = ['parcours', 'competences', 'contact'].map((id) =>
+    document.getElementById(id)
+  );
+  const links = document.querySelectorAll<HTMLAnchorElement>('.nav__link');
+
+  function updateActive(): void {
+    const scrollY = window.scrollY + 80;
+    let active = '';
+    sections.forEach((section) => {
+      if (section && section.offsetTop <= scrollY) active = section.id;
+    });
+    links.forEach((link) => {
+      const target = link.getAttribute('href')?.replace('#', '') ?? '';
+      link.classList.toggle('is-active', target === active);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>

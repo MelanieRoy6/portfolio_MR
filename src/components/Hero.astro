@@ -1,9 +1,24 @@
 ---
 import { profile } from '../data/profile';
+import HeroNetwork from './HeroNetwork.astro';
 ---
 <section class="hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">{profile.name}</h1>
-  <p class="hero__headline">{profile.headline}</p>
-  <p class="hero__pitch">{profile.pitch}</p>
-  <a href="#parcours" class="btn btn--primary">Découvrir mon parcours</a>
+  <HeroNetwork />
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Nantes et alentours</p>
+    <h1 id="hero-title" class="hero__name">{profile.name}</h1>
+    <p class="hero__headline">{profile.headline}</p>
+    <p class="hero__pitch">{profile.pitch}</p>
+    <div class="hero__actions">
+      <a href="#parcours" class="btn btn--primary">Découvrir mon parcours</a>
+      <a
+        href={profile.linkedin}
+        class="btn btn--ghost"
+        rel="noopener noreferrer"
+        target="_blank"
+        aria-label="Voir le profil LinkedIn de Mélanie Roy"
+      >LinkedIn</a>
+    </div>
+  </div>
 </section>
