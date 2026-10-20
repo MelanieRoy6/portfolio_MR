@@ -22,8 +22,8 @@
   --phase-2-entrepreneuriat: #0891b2;
   --phase-test:              #6366f1;   /* test & QA : indigo galaxy */
   --phase-3-test:            #6366f1;
-  --phase-dev:               #ffffff;   /* dev : blanc avec lueur galaxy */
-  --phase-4-dev:             #ffffff;
+  --phase-dev:               #818cf8;   /* dev : indigo clair galaxy */
+  --phase-4-dev:             #818cf8;
 
   /* ── Typographie ── */
   --font-heading: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
