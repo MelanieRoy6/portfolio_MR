@@ -1,19 +1,61 @@
 ---
 import { timeline } from '../data/timeline';
 import TimelineItem from './TimelineItem.astro';
+
+const firstYear = timeline[0]?.start ?? '';
 ---
 <section class="timeline" id="parcours" aria-labelledby="timeline-title">
-  <h2 id="timeline-title">Parcours</h2>
-
-  <!-- Repli sans JS : liste statique accessible -->
-  <div class="timeline__track" role="list">
-    <svg class="timeline__line" aria-hidden="true" focusable="false">
-      <line x1="50%" y1="0" x2="50%" y2="100%" stroke-dasharray="4 4" />
-    </svg>
-    {timeline.map((entry, i) => (
-      <TimelineItem entry={entry} index={i} />
-    ))}
+  <!--
+    Static heading scrolls past before the stage pins.
+    Without JS / with reduced-motion: items render as a normal vertical list below.
+  -->
+  <div class="timeline__intro">
+    <h2 id="timeline-title">Parcours</h2>
+    <p class="timeline__subtitle">Du médico-social au développement, une reconversion en quatre actes.</p>
   </div>
+
+  <!-- This element is pinned by GSAP when JS + no reduced-motion -->
+  <div class="timeline__stage" aria-label="Animation de la timeline — liste statique ci-dessous">
+
+    <!-- Large year counter in background -->
+    <div class="timeline__year-bg" aria-hidden="true">{firstYear}</div>
+
+    <!-- Vertical SVG line (drawn as animation progresses) -->
+    <svg
+      class="timeline__svg"
+      aria-hidden="true"
+      focusable="false"
+      preserveAspectRatio="none"
+    >
+      <path class="timeline__svg-track" d="M 2 0 L 2 100" />
+      <path class="timeline__svg-progress" d="M 2 0 L 2 100" />
+    </svg>
+
+    <!-- Glowing cursor dot that travels along the line -->
+    <div class="timeline__cursor" aria-hidden="true"></div>
+
+    <!-- Phase label (changes per item) -->
+    <div class="timeline__phase-label" aria-hidden="true"></div>
+
+    <!-- Items: all stacked, animated one-at-a-time by GSAP -->
+    <div class="timeline__inner" role="list">
+      {timeline.map((entry, i) => (
+        <TimelineItem entry={entry} index={i} />
+      ))}
+    </div>
+  </div>
+
+  <!--
+    Static fallback (visible when JS is off or reduced-motion).
+    Screen-reader accessible at all times.
+  -->
+  <noscript>
+    <div class="timeline__static" role="list">
+      {timeline.map((entry, i) => (
+        <TimelineItem entry={entry} index={i} />
+      ))}
+    </div>
+  </noscript>
 </section>
 
 <script>
