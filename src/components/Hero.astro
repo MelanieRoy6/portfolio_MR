@@ -1,5 +1,6 @@
 ---
 import { profile } from '../data/profile';
+import FloatingTags from './FloatingTags.astro';
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__grid-bg" aria-hidden="true"></div>
@@ -21,11 +22,5 @@ import { profile } from '../data/profile';
     </div>
   </div>
 
-  <div class="hero__badges" aria-hidden="true">
-    <span class="hero__badge">TypeScript</span>
-    <span class="hero__badge">Playwright</span>
-    <span class="hero__badge">ISTQB</span>
-    <span class="hero__badge">C# · Angular</span>
-    <span class="hero__badge">QA · Dev</span>
-  </div>
+  <FloatingTags />
 </section>

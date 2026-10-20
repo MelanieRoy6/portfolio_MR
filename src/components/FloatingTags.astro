@@ -1,0 +1,24 @@
+---
+import '../styles/floating-tags.css';
+import { floatingTags } from '../data/floatingTags';
+
+const DURATIONS = [7, 8, 9, 6.5, 8.5, 7.5, 10, 6, 9.5, 8, 7, 10];
+const DELAYS    = [0, -2, -5, -1.5, -4, -3, -6, -0.5, -7, -3.5, -1, -8];
+const AMPS      = [9, 10, 8, 11, 9, 10, 7, 10, 8, 9, 7, 12];
+---
+
+<div class="floating-tags" aria-hidden="true">
+  {floatingTags.map((tag, i) => (
+    <span
+      class:list={['ftag', `ftag--${tag.size ?? 'md'}`, i >= 6 && 'ftag--hide-mobile']}
+      data-size={tag.size ?? 'md'}
+      style={`left:${tag.x}%;top:${tag.y}%;--ftag-dur:${DURATIONS[i]}s;--ftag-delay:${DELAYS[i]}s;--ftag-amp:${AMPS[i]}px`}
+    >
+      {tag.label}
+    </span>
+  ))}
+</div>
+
+<script>
+  import '../scripts/floating-tags';
+</script>
