@@ -10,6 +10,10 @@ node_modules/
 .env.*
 !.env.example
 
+# Security audit (local only, never commit)
+*.local.md
+.audit-forbidden.txt
+
 # OS
 .DS_Store
 Thumbs.db

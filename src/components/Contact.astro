@@ -60,15 +60,4 @@ import { profile } from '../data/profile';
   </div>
 </section>
 
-<script>
-  const btn = document.getElementById('contact-email') as HTMLAnchorElement | null;
-  if (btn) {
-    const u = btn.dataset.u;
-    const d = btn.dataset.d;
-    if (u && d) {
-      btn.href = `mailto:${u}@${d}`;
-      btn.removeAttribute('target');
-      btn.removeAttribute('rel');
-    }
-  }
-</script>
+<script type="module" src="/scripts/contact.js"></script>
