@@ -1,0 +1,22 @@
+---
+import { timeline } from '../data/timeline';
+import TimelineItem from './TimelineItem.astro';
+---
+<section class="timeline" id="parcours" aria-labelledby="timeline-title">
+  <h2 id="timeline-title">Parcours</h2>
+
+  <!-- Repli sans JS : liste statique accessible -->
+  <div class="timeline__track" role="list">
+    <svg class="timeline__line" aria-hidden="true" focusable="false">
+      <line x1="50%" y1="0" x2="50%" y2="100%" stroke-dasharray="4 4" />
+    </svg>
+    {timeline.map((entry, i) => (
+      <TimelineItem entry={entry} index={i} />
+    ))}
+  </div>
+</section>
+
+<script>
+  import { initTimeline } from '../scripts/timeline';
+  initTimeline();
+</script>

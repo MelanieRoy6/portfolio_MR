@@ -1,0 +1,16 @@
+---
+import { skills } from '../data/skills';
+---
+<section class="skills" id="competences" aria-labelledby="skills-title">
+  <h2 id="skills-title">Compétences</h2>
+  <div class="skills__groups">
+    {skills.map((group) => (
+      <div class="skills__group">
+        <h3 class="skills__group-label">{group.label}</h3>
+        <ul class="skills__items" role="list">
+          {group.items.map((item) => <li class="tag">{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

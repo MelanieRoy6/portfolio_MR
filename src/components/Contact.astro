@@ -1,0 +1,44 @@
+---
+import { profile } from '../data/profile';
+---
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <h2 id="contact-title">Contact</h2>
+  <p>Je suis disponible à <strong>{profile.location}</strong>.</p>
+
+  <div class="contact__actions">
+    <!--
+      Repli sans JS : lien LinkedIn direct.
+      Avec JS : le href du bouton email est assemblé depuis les data-attributes (anti-scraping).
+    -->
+    <a
+      href={profile.linkedin}
+      class="btn btn--secondary"
+      id="contact-email"
+      data-u={profile.emailUser}
+      data-d={profile.emailDomain}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Email
+    </a>
+    <a href={profile.linkedin} class="btn btn--primary" rel="noopener noreferrer" target="_blank">
+      LinkedIn
+    </a>
+    <a href={profile.github} class="btn btn--ghost" rel="noopener noreferrer" target="_blank">
+      GitHub
+    </a>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('contact-email') as HTMLAnchorElement | null;
+  if (btn) {
+    const u = btn.dataset.u;
+    const d = btn.dataset.d;
+    if (u && d) {
+      btn.href = `mailto:${u}@${d}`;
+      btn.removeAttribute('target');
+      btn.removeAttribute('rel');
+    }
+  }
+</script>
