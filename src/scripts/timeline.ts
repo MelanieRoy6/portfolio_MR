@@ -3,14 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// CSS variable values matching tokens.css
-const PHASE_COLORS: Record<string, string> = {
-  medical:    '#14b8a6',
-  entreprise: '#f59e0b',
-  test:       '#6366f1',
-  dev:        '#22d3ee',
-};
-
 const PHASE_LABELS: Record<string, string> = {
   medical:    'Médico-social',
   entreprise: 'Engagement',
@@ -20,6 +12,15 @@ const PHASE_LABELS: Record<string, string> = {
 
 export function initTimeline(): void {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Lire les couleurs depuis tokens.css pour rester synchronisé
+  const rootStyle = getComputedStyle(document.documentElement);
+  const PHASE_COLORS: Record<string, string> = {
+    medical:    rootStyle.getPropertyValue('--phase-medical').trim(),
+    entreprise: rootStyle.getPropertyValue('--phase-entreprise').trim(),
+    test:       rootStyle.getPropertyValue('--phase-test').trim(),
+    dev:        rootStyle.getPropertyValue('--phase-dev').trim(),
+  };
 
   const section  = document.querySelector<HTMLElement>('.timeline');
   const stage    = document.querySelector<HTMLElement>('.timeline__stage');
