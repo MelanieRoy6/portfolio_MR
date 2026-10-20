@@ -30,8 +30,6 @@ export function createNetworkController(canvas: HTMLCanvasElement): NetworkContr
   let width = 0;
   let height = 0;
   let dpr = 1;
-  let canvasLeft = 0;
-  let canvasTop = 0;
 
   function initParticles(): void {
     const count = width < 640 ? COUNT_MOBILE : COUNT_DESKTOP;
@@ -58,8 +56,6 @@ export function createNetworkController(canvas: HTMLCanvasElement): NetworkContr
     dpr = Math.min(window.devicePixelRatio ?? 1, 2);
     width = rect.width;
     height = rect.height;
-    canvasLeft = rect.left;
-    canvasTop = rect.top;
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     canvas.style.width = width + 'px';
@@ -73,8 +69,9 @@ export function createNetworkController(canvas: HTMLCanvasElement): NetworkContr
 
     ctx.clearRect(0, 0, width, height);
 
-    const mx = mouseX - canvasLeft;
-    const my = mouseY - canvasTop;
+    const cr = canvas.getBoundingClientRect();
+    const mx = mouseX - cr.left;
+    const my = mouseY - cr.top;
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
     const mouseActive = mouseX > -9000 && !isTouch;
 

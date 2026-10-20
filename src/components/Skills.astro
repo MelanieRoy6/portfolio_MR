@@ -1,5 +1,6 @@
 ---
 import { skills } from '../data/skills';
+import FloatingTags from './FloatingTags.astro';
 
 const groupIcons: Record<string, string> = {
   'Test & QA': `<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
@@ -9,31 +10,41 @@ const groupIcons: Record<string, string> = {
 };
 ---
 <section class="skills" id="competences" aria-labelledby="skills-title">
-  <h2 id="skills-title">Compétences</h2>
-  <div class="skills__groups">
-    {skills.map((group) => (
-      <div class="skills__group">
-        <div class="skills__group-header">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="skills__group-icon"
-            aria-hidden="true"
-            focusable="false"
-            set:html={groupIcons[group.label] ?? ''}
-          />
-          <h3 class="skills__group-label">{group.label}</h3>
+  <canvas id="skills-network-canvas" aria-hidden="true"></canvas>
+
+  <FloatingTags />
+
+  <div class="skills__inner">
+    <h2 id="skills-title">Compétences</h2>
+    <div class="skills__groups">
+      {skills.map((group) => (
+        <div class="skills__group">
+          <div class="skills__group-header">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="skills__group-icon"
+              aria-hidden="true"
+              focusable="false"
+              set:html={groupIcons[group.label] ?? ''}
+            />
+            <h3 class="skills__group-label">{group.label}</h3>
+          </div>
+          <ul class="skills__items" role="list">
+            {group.items.map((item) => <li class="tag">{item}</li>)}
+          </ul>
         </div>
-        <ul class="skills__items" role="list">
-          {group.items.map((item) => <li class="tag">{item}</li>)}
-        </ul>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
+
+<script>
+  import '../scripts/skills-animation';
+</script>

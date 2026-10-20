@@ -21,7 +21,7 @@ export interface FloatingTagsController {
 }
 
 export function createFloatingTagsController(heroEl: HTMLElement): FloatingTagsController | null {
-  const tagEls = Array.from(document.querySelectorAll<HTMLElement>('.ftag'));
+  const tagEls = Array.from(heroEl.querySelectorAll<HTMLElement>('.ftag'));
   if (tagEls.length === 0) return null;
 
   let states: TagState[] = [];
