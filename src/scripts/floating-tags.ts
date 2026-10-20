@@ -15,22 +15,17 @@ interface TagState {
   velY: number;
 }
 
-function initFloatingTags(): void {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (window.matchMedia('(pointer: coarse)').matches) return;
+export interface FloatingTagsController {
+  measureHomes: () => void;
+  tick: (mouseX: number, mouseY: number) => boolean;
+}
 
-  const hero = document.querySelector<HTMLElement>('.hero');
+export function createFloatingTagsController(heroEl: HTMLElement): FloatingTagsController | null {
   const tagEls = Array.from(document.querySelectorAll<HTMLElement>('.ftag'));
-  if (!hero || tagEls.length === 0) return;
-
-  const heroEl: HTMLElement = hero;
+  if (tagEls.length === 0) return null;
 
   let states: TagState[] = [];
   let heroBounds = { top: 0, left: 0 };
-  let mouseX = -9999;
-  let mouseY = -9999;
-  let rafId = 0;
-  let isVisible = false;
 
   function measureHomes(): void {
     for (const s of states) {
@@ -57,24 +52,10 @@ function initFloatingTags(): void {
     });
   }
 
-  function isAtRest(): boolean {
-    return states.every(
-      (s) =>
-        Math.abs(s.offsetX) < 0.15 &&
-        Math.abs(s.offsetY) < 0.15 &&
-        Math.abs(s.velX) < 0.15 &&
-        Math.abs(s.velY) < 0.15,
-    );
-  }
-
-  function loop(): void {
-    if (!isVisible) {
-      rafId = 0;
-      return;
-    }
-
+  function tick(mouseX: number, mouseY: number): boolean {
     const heroTop = heroBounds.top - window.scrollY;
     const heroLeft = heroBounds.left - window.scrollX;
+    let atRest = true;
 
     for (const s of states) {
       const cx = heroLeft + s.homeX + s.offsetX;
@@ -104,57 +85,21 @@ function initFloatingTags(): void {
       }
 
       s.el.style.transform = `translate3d(${s.offsetX}px, ${s.offsetY}px, 0)`;
-    }
 
-    if (isAtRest()) {
-      rafId = 0;
-    } else {
-      rafId = requestAnimationFrame(loop);
-    }
-  }
-
-  function startLoop(): void {
-    if (!rafId && isVisible) {
-      rafId = requestAnimationFrame(loop);
-    }
-  }
-
-  heroEl.addEventListener('pointermove', (e: PointerEvent) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    startLoop();
-  });
-
-  heroEl.addEventListener('pointerleave', () => {
-    mouseX = -9999;
-    mouseY = -9999;
-    startLoop();
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      isVisible = entries[0]?.isIntersecting ?? false;
-      if (!isVisible && rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = 0;
-      } else if (isVisible) {
-        startLoop();
+      if (
+        Math.abs(s.offsetX) >= 0.15 ||
+        Math.abs(s.offsetY) >= 0.15 ||
+        Math.abs(s.velX) >= 0.15 ||
+        Math.abs(s.velY) >= 0.15
+      ) {
+        atRest = false;
       }
-    },
-    { threshold: 0.1 },
-  );
-  observer.observe(heroEl);
+    }
+
+    return atRest;
+  }
 
   measureHomes();
 
-  let resizeTimer: ReturnType<typeof setTimeout>;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      measureHomes();
-      startLoop();
-    }, 150);
-  });
+  return { measureHomes, tick };
 }
-
-initFloatingTags();
