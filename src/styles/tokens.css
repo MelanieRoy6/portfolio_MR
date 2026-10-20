@@ -11,15 +11,15 @@
   --color-muted:       #64748b;   /* texte secondaire sur fond clair */
   --color-accent:      #6366f1;   /* indigo galaxy — principal */
   --color-accent-text: #4338ca;   /* indigo assombri : texte sur fond clair (≈ 9:1 sur blanc) */
-  --color-accent-alt:  #22d3ee;   /* cyan galaxy */
+  --color-accent-alt:  #0891b2;   /* cyan galaxy */
   --color-highlight:   #818cf8;   /* indigo clair : focus, burger mobile, lueur */
   --color-border:      #334155;
 
   /* ── Phases timeline ── */
   --phase-medical:           #94a3b8;   /* médico-social : gris-bleu */
   --phase-1-sante:           #94a3b8;
-  --phase-entreprise:        #22d3ee;   /* entrepreneuriat : cyan galaxy */
-  --phase-2-entrepreneuriat: #22d3ee;
+  --phase-entreprise:        #0891b2;   /* entrepreneuriat : cyan galaxy */
+  --phase-2-entrepreneuriat: #0891b2;
   --phase-test:              #6366f1;   /* test & QA : indigo galaxy */
   --phase-3-test:            #6366f1;
   --phase-dev:               #ffffff;   /* dev : blanc avec lueur galaxy */
