@@ -6,21 +6,21 @@ export interface FloatingTag {
 }
 
 export const floatingTags: FloatingTag[] = [
-  // indices 0-5 : visibles aussi sur mobile
+  // indices 0-5 : visibles aussi sur mobile — restent à droite (safe toutes tailles)
   { label: 'TypeScript',  x: 72, y: 14, size: 'lg' },
   { label: 'Playwright',  x: 80, y: 35, size: 'md' },
   { label: 'C#',          x: 68, y: 54, size: 'md' },
   { label: '.NET',        x: 76, y: 72, size: 'md' },
   { label: 'SQL Server',  x: 66, y: 85, size: 'md' },
   { label: 'Angular',     x: 85, y: 62, size: 'md' },
-  // indices 6-14 : desktop uniquement
-  { label: 'Tests unitaires', x: 65, y: 26, size: 'sm' },
-  { label: 'Git',             x: 90, y: 46, size: 'sm' },
-  { label: 'XAML',            x: 84, y: 78, size: 'sm' },
-  { label: 'UWP',             x: 91, y: 24, size: 'sm' },
-  { label: 'Spring Boot',     x: 78, y: 90, size: 'lg' },
-  { label: 'Selenium',        x: 73, y: 44, size: 'sm' },
-  { label: 'E2E',             x: 63, y: 68, size: 'sm' },
-  { label: 'Postman',         x: 62, y: 18, size: 'sm' },
-  { label: 'Jira',            x: 70, y: 96, size: 'sm' },
+  // indices 6-14 : desktop uniquement — éparpillés autour du texte
+  { label: 'Tests unitaires', x: 12, y:  8, size: 'sm' }, // haut-gauche
+  { label: 'Git',             x:  4, y: 42, size: 'sm' }, // gauche
+  { label: 'XAML',            x:  7, y: 67, size: 'sm' }, // gauche-bas
+  { label: 'UWP',             x: 40, y:  7, size: 'sm' }, // haut-centre
+  { label: 'Spring Boot',     x: 25, y: 90, size: 'lg' }, // bas-gauche
+  { label: 'Selenium',        x: 73, y: 44, size: 'sm' }, // droite-milieu
+  { label: 'E2E',             x: 45, y: 93, size: 'sm' }, // bas-centre
+  { label: 'Postman',         x: 24, y:  7, size: 'sm' }, // haut-gauche-centre
+  { label: 'Jira',            x: 55, y: 87, size: 'sm' }, // bas-droite-centre
 ];
