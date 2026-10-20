@@ -34,7 +34,7 @@ Référence design : karimbouzgarne.fr (navbar fixe, hero plein écran « accroc
 
 ## 5. Structure de la page (one-page)
 1. **Nav** fixe : Parcours · Compétences · Contact.
-2. **Hero** plein écran : nom, titre (« Développeuse & QA Automation — double compétence »), phrase d'accroche, bouton « Découvrir mon parcours ».
+2. **Hero** plein écran : nom, titre (« Développeuse & QA Automation, double compétence »), phrase d'accroche, bouton « Voir mon parcours ».
 3. **À propos** : pitch court (reconversion, ce que je cherche).
 4. **Parcours (cœur du site)** : timeline animée au scroll.
 5. **Compétences** : groupes (Test & QA / Dev / Données & IA / DevOps & outils).
@@ -81,7 +81,7 @@ Mission : transformer le CV de Mélanie en données structurées.
    - 2013 Diplôme d'aide-soignante DEAS (IFAS Croix-Rouge, Rezé)
    - 2012–2024 Aide-soignante (EHPAD Saint Joseph, CHU Laënnec, ICO Gauducheau)
    - 2014–2026 Secrétaire associative e-sport (Naolan)
-   - 2017–2019 Co-fondatrice, KWICKY SAS (plateforme de services pour coiffeurs à domicile) — 1re expérience du numérique
+   - 2017–2019 Co-fondatrice, KWICKY SAS (plateforme de services pour coiffeurs à domicile, première expérience du numérique)
    - 2024–2025 Formation Testeur logiciel, Bac+2 (ENI)
    - 2025 Certification ISTQB Foundation 4
    - 2025 Stage testeuse logicielle, 2 mois (UCAYA) : cahier de tests, framework de test, scripts Playwright/TypeScript, intégration DevOps

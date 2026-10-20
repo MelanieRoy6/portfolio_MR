@@ -9,7 +9,7 @@ export const timeline: TimelineEntry[] = [
     title: 'Bac Pro Services aux personnes et Mobilité dans les territoires',
     org: 'Lycée Saint Martin',
     place: 'Machecoul',
-    punchline: "Première spécialisation dans l'accompagnement humain et le soin.",
+    punchline: "Bac pro orienté soins à la personne et interventions à domicile.",
     bullets: [
       "Formation aux techniques de soins et d'aide à la personne",
       'Stages en EHPAD et services de soins à domicile',
@@ -24,7 +24,7 @@ export const timeline: TimelineEntry[] = [
     title: 'Aide-soignante',
     org: 'EHPAD Saint Joseph · CHU Laënnec · ICO Gauducheau',
     place: 'Nantes',
-    punchline: 'Plus de dix ans au service de patients exigeants, dans des environnements sous haute pression.',
+    punchline: 'Douze ans de soins en oncologie, gériatrie et soins de suite, dans trois établissements nantais.',
     bullets: [
       'Prise en charge de patients en oncologie, gériatrie et soins de suite',
       "Transmission d'informations précises et documentation rigoureuse",
@@ -40,7 +40,7 @@ export const timeline: TimelineEntry[] = [
     title: 'Formation Testeur logiciel (Bac+2)',
     org: 'ENI',
     place: 'Nantes',
-    punchline: 'Reconversion réussie : de la rigueur médicale à la rigueur du test logiciel.',
+    punchline: 'Bac+2 obtenu à l\'ENI, avec Playwright et TypeScript pour l\'automatisation.',
     bullets: [
       'Rédaction de cahiers de tests et stratégies de test',
       'Automatisation avec Playwright/TypeScript',
