@@ -1,12 +1,3 @@
-/* ── Police Le Gusto (self-hosted, pas de CDN) ───────────────────────────── */
-@font-face {
-  font-family: 'Le Gusto';
-  src: url('/fonts/le-gusto.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ── Tokens CSS — modifiable par l'agent GRAPHISME ─────────────────────── */
 :root {
   /* Couleurs */
@@ -25,7 +16,6 @@
   --phase-dev:         #22d3ee;
 
   /* Typographie */
-  --font-display: 'Le Gusto', system-ui, sans-serif;
   --font-sans:   system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:   ui-monospace, 'Cascadia Code', monospace;
   --text-xs:     0.75rem;
