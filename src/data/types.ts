@@ -35,5 +35,6 @@ export interface Profile {
 export interface SkillGroup {
   label: string;
   items: string[];
-  en?: { label?: string; items?: string[] };
+  description?: string;
+  en?: { label?: string; items?: string[]; description?: string };
 }

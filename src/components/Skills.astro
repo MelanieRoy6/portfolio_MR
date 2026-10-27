@@ -1,12 +1,6 @@
 ---
 import { skills } from '../data/skills';
-
-const groupIcons: Record<string, string> = {
-  'Test & QA':       `<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
-  'Développement':   `<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>`,
-  'Données & IA':    `<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>`,
-  'DevOps & Outils': `<circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>`,
-};
+import { profile } from '../data/profile';
 
 // Mise en page « bento » : Développement en grand, le dernier groupe en largeur.
 const BIG_LABEL = 'Développement';
@@ -32,27 +26,27 @@ const lastIndex = ordered.length - 1;
           data-en-label={group.en?.label ?? group.label}
           data-fr-items={JSON.stringify(group.items)}
           data-en-items={JSON.stringify(group.en?.items ?? group.items)}
+          data-fr-desc={group.description ?? ''}
+          data-en-desc={group.en?.description ?? group.description ?? ''}
         >
-          <div class="skills__group-header">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="skills__group-icon"
-              aria-hidden="true"
-              focusable="false"
-              set:html={groupIcons[group.label] ?? ''}
-            />
-            <h3 class="skills__group-label">{group.label}</h3>
-          </div>
+          <h3 class="skills__group-label">{group.label}</h3>
+          {group.description && (
+            <p class="skills__group-desc" data-skill-desc>{group.description}</p>
+          )}
           <ul class="skills__items" role="list">
             {group.items.map((item) => <li class="tag">{item}</li>)}
           </ul>
+          {group.label === BIG_LABEL && (
+            <a
+              href={profile.github}
+              class="skills__github-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="skills.github"
+            >
+              Projets visibles sur GitHub →
+            </a>
+          )}
         </article>
       ))}
     </div>

@@ -53,15 +53,18 @@ function applyLang(lang: Lang): void {
     const d = group.dataset;
     const label    = lang === 'en' ? d.enLabel : d.frLabel;
     const itemsRaw = lang === 'en' ? d.enItems : d.frItems;
+    const desc     = lang === 'en' ? d.enDesc  : d.frDesc;
 
     const labelEl = group.querySelector('.skills__group-label');
     const itemsEl = group.querySelector('.skills__items');
+    const descEl  = group.querySelector<HTMLElement>('[data-skill-desc]');
 
     if (label    && labelEl)  labelEl.textContent = label;
     if (itemsRaw && itemsEl) {
       const items = JSON.parse(itemsRaw) as string[];
       itemsEl.innerHTML = items.map((item) => `<li class="tag">${item}</li>`).join('');
     }
+    if (descEl) descEl.textContent = desc ?? '';
   });
 
   // Toggle button label

@@ -2,30 +2,6 @@ import type { TimelineEntry } from './types';
 
 export const timeline: TimelineEntry[] = [
   {
-    id: 'bac-pro-smr',
-    start: '2010',
-    end: '2012',
-    category: 'formation',
-    title: 'Bac Pro Services aux personnes et Mobilité dans les territoires',
-    org: 'Lycée Saint Martin',
-    place: 'Machecoul',
-    punchline: "Première spécialisation dans l'accompagnement humain et le soin.",
-    bullets: [
-      "Formation aux techniques de soins et d'aide à la personne",
-      'Stages en EHPAD et services de soins à domicile',
-    ],
-    tags: ['médico-social', 'soin', 'aide à la personne'],
-    en: {
-      title: 'Vocational Baccalaureate – Social Care & Community Services',
-      punchline: 'First specialization in human care and personal support.',
-      bullets: [
-        'Training in care techniques and personal assistance',
-        'Internships in nursing homes and home care services',
-      ],
-      tags: ['social care', 'nursing', 'personal assistance'],
-    },
-  },
-  {
     id: 'aide-soignante',
     start: '2012',
     end: '2024',
