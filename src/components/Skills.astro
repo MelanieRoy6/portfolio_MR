@@ -1,6 +1,5 @@
 ---
 import { skills } from '../data/skills';
-import FloatingTags from './FloatingTags.astro';
 
 const groupIcons: Record<string, string> = {
   'Test & QA':       `<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
@@ -8,18 +7,26 @@ const groupIcons: Record<string, string> = {
   'Données & IA':    `<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>`,
   'DevOps & Outils': `<circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>`,
 };
+
+// Mise en page « bento » : Développement en grand, le dernier groupe en largeur.
+const BIG_LABEL = 'Développement';
+const ordered = [
+  ...skills.filter((g) => g.label === BIG_LABEL),
+  ...skills.filter((g) => g.label !== BIG_LABEL),
+];
+const lastIndex = ordered.length - 1;
 ---
 <section class="skills" id="competences" aria-labelledby="skills-title">
-  <canvas id="skills-network-canvas" aria-hidden="true"></canvas>
-
-  <FloatingTags />
-
   <div class="skills__inner">
-    <h2 id="skills-title" data-i18n="skills.title">Compétences</h2>
+    <p class="section-eyebrow" data-i18n="skills.eyebrow">Compétences</p>
+    <h2 id="skills-title" data-i18n="skills.title">Ce que j'utilise, ce que j'explore</h2>
     <div class="skills__groups">
-      {skills.map((group) => (
-        <div
-          class="skills__group"
+      {ordered.map((group, i) => (
+        <article
+          class:list={[
+            'skills__group',
+            { 'skills__group--big': group.label === BIG_LABEL, 'skills__group--wide': i === lastIndex && lastIndex > 2 },
+          ]}
           data-skill-group
           data-fr-label={group.label}
           data-en-label={group.en?.label ?? group.label}
@@ -46,12 +53,8 @@ const groupIcons: Record<string, string> = {
           <ul class="skills__items" role="list">
             {group.items.map((item) => <li class="tag">{item}</li>)}
           </ul>
-        </div>
+        </article>
       ))}
     </div>
   </div>
 </section>
-
-<script>
-  import '../scripts/skills-animation';
-</script>
