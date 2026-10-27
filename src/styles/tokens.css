@@ -1,39 +1,39 @@
-/* ── Tokens CSS (palette Cobalt) — modifiable par l'agent GRAPHISME ─────────────────────── */
+/* ── Tokens CSS (palette Terracotta) — modifiable par l'agent GRAPHISME ─────────────────────── */
 :root {
-  /* ── Couleurs — palette Cobalt (clair) ── */
-  --color-bg:          #F5F8FD;
-  --color-ink:         #0F1B3D;   /* fonds sombres (sections « deep ») */
-  --color-surface:     #E8EFFA;
+  /* ── Couleurs — palette Terracotta (clair) ── */
+  --color-bg:          #FBF6F0;
+  --color-ink:         #2E1B15;   /* fonds sombres (sections « deep ») */
+  --color-surface:     #F3E8DE;
   --color-paper:       #ffffff;
-  --color-mist:        #E8EFFA;
-  --color-text:        #0F1B3D;
-  --color-text-muted:  #4A5878;   /* ≈ 6:1 sur bg, ≈ 5,8:1 sur surface */
-  --color-muted:       #4A5878;
-  --color-accent:      #1F4FD8;   /* cobalt — couleur principale (≈ 6:1 sur bg) */
-  --color-accent-text: #1F4FD8;
-  --color-accent-alt:  #0E7490;   /* cyan assombri, réservé à la phase entrepreneuriat */
-  --color-highlight:   #3B6CF0;   /* focus, burger mobile */
-  --color-border:      #CAD6EA;
+  --color-mist:        #F3E8DE;
+  --color-text:        #2E1B15;
+  --color-text-muted:  #6B5348;   /* ≈ 6:1 sur bg, ≈ 5,8:1 sur surface */
+  --color-muted:       #6B5348;
+  --color-accent:      #A63E22;   /* terracotta — couleur principale (≈ 6:1 sur bg) */
+  --color-accent-text: #A63E22;
+  --color-accent-alt:  #8A5A14;   /* ocre brûlé, réservé à la phase entrepreneuriat */
+  --color-highlight:   #C4552F;   /* focus, burger mobile */
+  --color-border:      #E2D2C4;
 
   /* ── Sections sombres (Compétences, Contact) et intro hero ── */
-  --color-deep:        #0F1B3D;
-  --color-on-deep:     #F5F8FD;
-  --color-on-deep-muted: #B3C0DA;
-  --color-accent-deep: #8FB0FF;   /* accent sur fond deep (≈ 7,9:1) */
-  --color-screen:      #0E1620;   /* écran de l'intro */
-  --color-device:      #14224A;   /* cadre de l'écran */
-  --color-metal:       #C3CAC6;
-  --color-metal-dark:  #8D9792;
+  --color-deep:        #2E1B15;
+  --color-on-deep:     #FBF6F0;
+  --color-on-deep-muted: #D5C2B6;
+  --color-accent-deep: #F0906C;   /* accent sur fond deep (≈ 7,9:1) */
+  --color-screen:      #1A1210;   /* écran de l'intro */
+  --color-device:      #3A2A24;   /* cadre de l'écran */
+  --color-metal:       #CFC4BB;
+  --color-metal-dark:  #968A81;
 
   /* ── Phases timeline ── */
-  --phase-medical:           #5B6B8A;   /* médico-social : gris-bleu */
-  --phase-1-sante:           #5B6B8A;
-  --phase-entreprise:        #0E7490;   /* entrepreneuriat : cyan */
-  --phase-2-entrepreneuriat: #0E7490;
-  --phase-test:              #2F5BC4;   /* test & QA : bleu */
-  --phase-3-test:            #2F5BC4;
-  --phase-dev:               #1F4FD8;   /* dev : cobalt */
-  --phase-4-dev:             #1F4FD8;
+  --phase-medical:           #7A6358;   /* médico-social : brun grisé */
+  --phase-1-sante:           #7A6358;
+  --phase-entreprise:        #8A5A14;   /* entrepreneuriat : ocre */
+  --phase-2-entrepreneuriat: #8A5A14;
+  --phase-test:              #B4452A;   /* test & QA : terracotta clair */
+  --phase-3-test:            #B4452A;
+  --phase-dev:               #8F3119;   /* dev : terracotta profond */
+  --phase-4-dev:             #8F3119;
 
   /* ── Typographie ── */
   --font-heading: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;

@@ -86,7 +86,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--space-8);
-  background: rgb(245 248 253 / 0.88);
+  background: rgb(251 246 240 / 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
@@ -601,8 +601,8 @@ section { scroll-margin-top: var(--nav-height); }
 /* Fallback for browsers without `from` in rgb() */
 @supports not (color: rgb(from red r g b)) {
   .timeline__cursor {
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25),
-                0 0 24px 6px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 0 4px rgba(166, 62, 34, 0.25),
+                0 0 24px 6px rgba(166, 62, 34, 0.4);
   }
 }
 
@@ -672,7 +672,7 @@ section { scroll-margin-top: var(--nav-height); }
 }
 .skills__group:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 44px -26px rgb(15 27 61 / 0.45);
+  box-shadow: 0 24px 44px -26px rgb(46 27 21 / 0.45);
 }
 
 .skills__group--big {
