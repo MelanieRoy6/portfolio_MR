@@ -10,18 +10,43 @@ import '../styles/hero-intro.css';
       <g data-a="camA">
         <g data-a="aWrap">
           <g data-a="aEnter">
-            <path data-a="ear" d="M520 335 C 500 250, 400 220, 345 120"></path>
-            <path data-a="ear" d="M520 335 C 540 240, 520 160, 470 85"></path>
-            <circle data-a="metal" cx="345" cy="120" r="15"></circle>
-            <circle data-a="metal" cx="470" cy="85" r="15"></circle>
-            <path data-a="tube" d="M520 335 C 520 620, 900 700, 1000 520 S 1030 440 1024 410"></path>
-            <circle data-a="junction" cx="520" cy="335" r="19"></circle>
-            <circle data-a="metal" cx="1100" cy="402.5" r="88"></circle>
-            <circle data-a="metalIn" cx="1100" cy="402.5" r="76"></circle>
+            <defs>
+              <radialGradient id="hi-chrome" cx="35%" cy="30%" r="85%">
+                <stop offset="0" stop-color="#FAFBFB"></stop>
+                <stop offset="0.55" stop-color="#C3CAC6"></stop>
+                <stop offset="1" stop-color="#8D9792"></stop>
+              </radialGradient>
+            </defs>
+            <!-- arceau : deux tubes métalliques en lyre, embouts tournés vers l'intérieur -->
+            <path data-a="ear" d="M520 345 C 500 280, 400 250, 395 160 C 392 125, 410 100, 440 92"></path>
+            <path data-a="ear" d="M520 345 C 540 280, 640 250, 645 160 C 648 125, 630 100, 600 92"></path>
+            <path data-a="earHi" d="M520 345 C 500 280, 400 250, 395 160 C 392 125, 410 100, 440 92"></path>
+            <path data-a="earHi" d="M520 345 C 540 280, 640 250, 645 160 C 648 125, 630 100, 600 92"></path>
+            <path data-a="earGl" d="M517 343 C 497 280, 397 250, 392 160 C 389 126, 408 102, 438 94"></path>
+            <path data-a="earGl" d="M523 343 C 543 280, 643 250, 648 160 C 651 126, 632 102, 602 94"></path>
+            <ellipse data-a="tip" cx="454" cy="89" rx="16" ry="11" transform="rotate(-15 454 89)"></ellipse>
+            <ellipse data-a="tip" cx="586" cy="89" rx="16" ry="11" transform="rotate(15 586 89)"></ellipse>
+            <!-- pièce en Y -->
+            <path data-a="metal" d="M504 336 Q 520 350 536 336 L 530 374 L 510 374 Z"></path>
+            <rect data-a="metal" x="508" y="372" width="24" height="16" rx="5"></rect>
+            <!-- tuyau principal -->
+            <path data-a="tubeShadow" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450" transform="translate(5 9)"></path>
+            <path data-a="tube" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450"></path>
+            <path data-a="tubeHi" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450" transform="translate(-3 -4)"></path>
+            <!-- pied du pavillon -->
+            <path data-a="stemO" d="M970 450 L1018 432"></path>
+            <path data-a="stem" d="M970 450 L1018 432"></path>
+            <rect data-a="metal" x="-16" y="-13" width="32" height="26" rx="7" transform="translate(976 448) rotate(-20)"></rect>
+            <!-- pavillon -->
+            <circle data-a="shadow" cx="1106" cy="412.5" r="90"></circle>
+            <circle data-a="chrome" cx="1100" cy="402.5" r="88"></circle>
+            <circle data-a="rubber" cx="1100" cy="402.5" r="80"></circle>
+            <circle data-a="chromeIn" cx="1100" cy="402.5" r="73"></circle>
             <circle data-a="membrane" cx="1100" cy="402.5" r="68"></circle>
             <g data-a="mdetails">
               <circle data-a="ring" cx="1100" cy="402.5" r="46"></circle>
               <circle data-a="ring" cx="1100" cy="402.5" r="24"></circle>
+              <path data-a="sheen" d="M1057.4 372.7 A52 52 0 0 1 1086.5 352.3"></path>
             </g>
             <circle data-a="rip rip1" cx="1100" cy="402.5" r="88"></circle>
             <circle data-a="rip rip2" cx="1100" cy="402.5" r="88"></circle>
