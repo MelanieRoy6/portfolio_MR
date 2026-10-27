@@ -939,3 +939,25 @@ section { scroll-margin-top: var(--nav-height); }
 .contact h2 { max-width: 22ch; }
 .footer { border-top: 1px solid rgb(255 255 255 / 0.16); }
 .contact { border: none; }
+
+/* ── Curseur : point bleu ─────────────────────────────────────────────────
+   Appliqué seulement aux souris / trackpads (pointer: fine).
+   Les images de curseur ne peuvent pas lire les variables CSS : les couleurs
+   sont écrites en dur (cobalt #1F4FD8 ; bleu clair #8FB0FF sur fond sombre).
+   Contour blanc pour rester visible sur tous les fonds. */
+@media (pointer: fine) {
+  :root {
+    --cursor-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%231F4FD8' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
+    --cursor-dot-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='18' cy='18' r='15' fill='%231F4FD8' fill-opacity='0.18' stroke='%231F4FD8' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='6' fill='%231F4FD8' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 18 18, pointer;
+  }
+
+  html, body { cursor: var(--cursor-dot); }
+  a, button, .btn, [role="button"], summary { cursor: var(--cursor-dot-link); }
+
+  /* Sections sombres : point bleu clair */
+  .contact, .footer {
+    --cursor-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%238FB0FF' stroke='%230F1B3D' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
+    --cursor-dot-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='18' cy='18' r='15' fill='%238FB0FF' fill-opacity='0.22' stroke='%238FB0FF' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='6' fill='%238FB0FF' stroke='%230F1B3D' stroke-width='2'/%3E%3C/svg%3E") 18 18, pointer;
+    cursor: var(--cursor-dot);
+  }
+}
