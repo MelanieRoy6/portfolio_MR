@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import SectionDivider from '../components/SectionDivider.astro';
 import TimelineScroll from '../components/TimelineScroll.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
@@ -11,8 +13,13 @@ import Footer from '../components/Footer.astro';
   <Nav />
   <main>
     <Hero />
+    <SectionDivider shape="wave-in" from="bg" to="surface" />
+    <About />
+    <SectionDivider shape="wave-out" from="surface" to="bg" />
     <TimelineScroll />
+    <SectionDivider shape="diagonal" from="bg" to="surface" />
     <Skills />
+    <SectionDivider shape="wave-deep" from="surface" to="deep" />
     <Contact />
   </main>
   <Footer />

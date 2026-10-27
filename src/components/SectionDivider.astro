@@ -1,0 +1,21 @@
+---
+interface Props {
+  shape: 'wave-in' | 'wave-out' | 'diagonal' | 'wave-deep';
+  from: 'bg' | 'surface';
+  to: 'bg' | 'surface' | 'deep';
+}
+
+const { shape, from, to } = Astro.props;
+
+const paths: Record<Props['shape'], string> = {
+  'wave-in':   'M0 44 C 240 92 480 0 760 38 S 1200 86 1440 26 L1440 80 L0 80 Z',
+  'wave-out':  'M0 30 C 240 0 480 84 720 44 S 1200 0 1440 40 L1440 80 L0 80 Z',
+  'diagonal':  'M0 80 L1440 0 L1440 80 Z',
+  'wave-deep': 'M0 40 C 300 0 540 84 800 44 S 1220 -6 1440 40 L1440 80 L0 80 Z',
+};
+---
+<div class={`divider divider--from-${from}`} aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false">
+    <path class={`divider__fill divider__fill--${to}`} d={paths[shape]} />
+  </svg>
+</div>
