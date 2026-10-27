@@ -950,13 +950,28 @@ section { scroll-margin-top: var(--nav-height); }
 
 /* ── Curseur : point bleu ─────────────────────────────────────────────────
    Appliqué seulement aux souris / trackpads (pointer: fine).
-   Les images de curseur ne peuvent pas lire les variables CSS : les couleurs
-   sont écrites en dur (cobalt #1F4FD8 ; bleu clair #8FB0FF sur fond sombre).
-   Contour blanc pour rester visible sur tous les fonds. */
+   Les images sont dans public/cursors/ (et non en data: URI) car la CSP du site
+   impose img-src 'self'. Version @2x pour les écrans haute densité.
+   Contour blanc pour rester visible sur tous les fonds ; bleu clair sur fond sombre. */
 @media (pointer: fine) {
   :root {
-    --cursor-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%231F4FD8' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
-    --cursor-dot-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='18' cy='18' r='15' fill='%231F4FD8' fill-opacity='0.18' stroke='%231F4FD8' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='6' fill='%231F4FD8' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 18 18, pointer;
+    --cursor-dot:
+      url("/cursors/dot.png") 12 12,
+      auto;
+    --cursor-dot-link:
+      url("/cursors/dot-link.png") 18 18,
+      pointer;
+  }
+
+  @supports (cursor: image-set(url("/cursors/dot.png") 1x)) {
+    :root {
+      --cursor-dot:
+        image-set(url("/cursors/dot.png") 1x, url("/cursors/dot@2x.png") 2x) 12 12,
+        auto;
+      --cursor-dot-link:
+        image-set(url("/cursors/dot-link.png") 1x, url("/cursors/dot-link@2x.png") 2x) 18 18,
+        pointer;
+    }
   }
 
   html, body { cursor: var(--cursor-dot); }
@@ -964,8 +979,23 @@ section { scroll-margin-top: var(--nav-height); }
 
   /* Sections sombres : point bleu clair */
   .contact, .footer {
-    --cursor-dot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='6' fill='%238FB0FF' stroke='%230F1B3D' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
-    --cursor-dot-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='18' cy='18' r='15' fill='%238FB0FF' fill-opacity='0.22' stroke='%238FB0FF' stroke-width='2'/%3E%3Ccircle cx='18' cy='18' r='6' fill='%238FB0FF' stroke='%230F1B3D' stroke-width='2'/%3E%3C/svg%3E") 18 18, pointer;
+    --cursor-dot:
+      url("/cursors/dot-light.png") 12 12,
+      auto;
+    --cursor-dot-link:
+      url("/cursors/dot-link-light.png") 18 18,
+      pointer;
     cursor: var(--cursor-dot);
+  }
+
+  @supports (cursor: image-set(url("/cursors/dot.png") 1x)) {
+    .contact, .footer {
+      --cursor-dot:
+        image-set(url("/cursors/dot-light.png") 1x, url("/cursors/dot-light@2x.png") 2x) 12 12,
+        auto;
+      --cursor-dot-link:
+        image-set(url("/cursors/dot-link-light.png") 1x, url("/cursors/dot-link-light@2x.png") 2x) 18 18,
+        pointer;
+    }
   }
 }
