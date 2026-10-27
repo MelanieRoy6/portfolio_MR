@@ -128,6 +128,12 @@ export function initTimeline(): void {
       const color = PHASE_COLORS[phase] ?? PHASE_COLORS['medical'];
       document.documentElement.style.setProperty('--color-accent', color);
     },
+    onLeave() {
+      document.documentElement.style.removeProperty('--color-accent');
+    },
+    onLeaveBack() {
+      document.documentElement.style.removeProperty('--color-accent');
+    },
   });
 
   // Recalculate after web fonts are ready
