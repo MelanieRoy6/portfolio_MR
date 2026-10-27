@@ -1,5 +1,12 @@
 export type TimelineCategory = 'formation' | 'experience' | 'certification' | 'engagement';
 
+export interface TimelineEntryEn {
+  title?: string;
+  punchline?: string;
+  bullets?: string[];
+  tags?: string[];
+}
+
 export interface TimelineEntry {
   id: string;
   start: string;
@@ -11,6 +18,7 @@ export interface TimelineEntry {
   punchline: string;
   bullets: string[];
   tags: string[];
+  en?: TimelineEntryEn;
 }
 
 export interface Profile {
@@ -27,4 +35,5 @@ export interface Profile {
 export interface SkillGroup {
   label: string;
   items: string[];
+  en?: { label?: string; items?: string[] };
 }

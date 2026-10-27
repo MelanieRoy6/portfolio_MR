@@ -783,7 +783,8 @@ h2::after {
   /* Timeline animated on mobile: single column */
   .timeline--js .timeline-item {
     grid-template-columns: 1fr;
-    padding: var(--space-6) var(--space-4);
+    padding: var(--space-4) var(--space-4);
+    align-content: center;
   }
   .timeline--js .timeline-item--left .timeline-item__content,
   .timeline--js .timeline-item--right .timeline-item__content {
@@ -791,6 +792,8 @@ h2::after {
     justify-self: stretch;
     max-width: 100%;
     text-align: left;
+    max-height: calc(100vh - 64px - var(--space-8));
+    overflow-y: auto;
   }
   .timeline--js .timeline-item--left .timeline-item__meta { justify-content: flex-start; }
   .timeline--js .timeline-item--left .timeline-item__tags { justify-content: flex-start; }

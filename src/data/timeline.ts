@@ -15,6 +15,15 @@ export const timeline: TimelineEntry[] = [
       'Stages en EHPAD et services de soins à domicile',
     ],
     tags: ['médico-social', 'soin', 'aide à la personne'],
+    en: {
+      title: 'Vocational Baccalaureate – Social Care & Community Services',
+      punchline: 'First specialization in human care and personal support.',
+      bullets: [
+        'Training in care techniques and personal assistance',
+        'Internships in nursing homes and home care services',
+      ],
+      tags: ['social care', 'nursing', 'personal assistance'],
+    },
   },
   {
     id: 'aide-soignante',
@@ -31,6 +40,42 @@ export const timeline: TimelineEntry[] = [
       "Travail en équipe pluridisciplinaire dans des contextes d'urgence",
     ],
     tags: ['gériatrie', 'oncologie', 'soins', 'travail en équipe'],
+    en: {
+      title: 'Nursing Assistant',
+      punchline: 'Over ten years serving demanding patients in high-pressure environments.',
+      bullets: [
+        'Care for oncology, geriatrics, and post-acute patients',
+        'Accurate information relay and rigorous documentation',
+        'Teamwork in multidisciplinary settings and emergency contexts',
+      ],
+      tags: ['geriatrics', 'oncology', 'care', 'teamwork'],
+    },
+  },
+  {
+    id: 'kwicky',
+    start: '2017',
+    end: '2019',
+    category: 'experience',
+    title: 'Co-fondatrice – KWICKY',
+    org: 'KWICKY',
+    place: 'France',
+    punchline: `Co-fondation d'une startup numérique : de l'idée au produit, business plan inclus.`,
+    bullets: [
+      'Participation aux fondations de la startup : vision produit et business plan',
+      `Tests fonctionnels de l'application à chaque itération de développement`,
+      'Reporting de bugs et suivi des fonctionnalités via Jira',
+    ],
+    tags: ['startup', 'product', 'Jira', 'QA', 'business plan'],
+    en: {
+      title: 'Co-founder – KWICKY',
+      punchline: 'Co-founded a digital startup: from idea to product, including business plan.',
+      bullets: [
+        'Contributed to startup foundations: product vision and business plan',
+        'Functional testing of the app at each development iteration',
+        'Bug reporting and feature tracking via Jira',
+      ],
+      tags: ['startup', 'product', 'Jira', 'QA', 'business plan'],
+    },
   },
   {
     id: 'formation-testeur',
@@ -47,6 +92,16 @@ export const timeline: TimelineEntry[] = [
       'Introduction aux pratiques CI/CD',
     ],
     tags: ['test logiciel', 'Playwright', 'TypeScript', 'CI/CD'],
+    en: {
+      title: 'Software Testing Training (2-year diploma)',
+      punchline: 'Successful career change: from medical precision to software testing precision.',
+      bullets: [
+        'Writing test plans and test strategies',
+        'Automation with Playwright/TypeScript',
+        'Introduction to CI/CD practices',
+      ],
+      tags: ['software testing', 'Playwright', 'TypeScript', 'CI/CD'],
+    },
   },
   {
     id: 'cda-alternance',
@@ -63,5 +118,15 @@ export const timeline: TimelineEntry[] = [
       'Java Spring Boot, Angular, Flutter, SQL Server, Python/ML',
     ],
     tags: ['C#', 'Angular', 'Playwright', 'Java', 'Flutter', 'CI/CD', 'alternance'],
+    en: {
+      title: 'Application Developer Designer (3-year diploma)',
+      punchline: 'Dual dev & QA role in work-study: CANAL+ app and automated CI tests.',
+      bullets: [
+        'C#/XAML UWP development on a CANAL+ application',
+        'E2E tests (Playwright/FlaUI) and unit tests (Vitest/MSTest) integrated in CI',
+        'Java Spring Boot, Angular, Flutter, SQL Server, Python/ML',
+      ],
+      tags: ['C#', 'Angular', 'Playwright', 'Java', 'Flutter', 'CI/CD', 'work-study'],
+    },
   },
 ];

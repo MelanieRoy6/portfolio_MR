@@ -6,12 +6,12 @@ import HeroNetwork from './HeroNetwork.astro';
   <HeroNetwork />
 
   <div class="hero__content">
-    <p class="hero__eyebrow">Nantes et alentours</p>
+    <p class="hero__eyebrow" data-i18n="hero.location">Nantes et alentours</p>
     <h1 id="hero-title" class="hero__name">{profile.name}</h1>
-    <p class="hero__headline">{profile.headline}</p>
-    <p class="hero__pitch">{profile.pitch}</p>
+    <p class="hero__headline" data-i18n="hero.headline">{profile.headline}</p>
+    <p class="hero__pitch" data-i18n="hero.pitch">{profile.pitch}</p>
     <div class="hero__actions">
-      <a href="#parcours" class="btn btn--primary">Découvrir mon parcours</a>
+      <a href="#parcours" class="btn btn--primary" data-i18n="hero.cta">Découvrir mon parcours</a>
       <a
         href={profile.linkedin}
         class="btn btn--ghost"

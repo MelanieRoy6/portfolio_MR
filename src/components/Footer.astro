@@ -4,7 +4,7 @@ const year = new Date().getFullYear();
 ---
 <footer class="footer">
   <div class="footer__inner">
-    <p class="footer__copy">© {year} {profile.name} — {profile.location}</p>
+    <p class="footer__copy">© {year} {profile.name} — <span data-i18n="footer.location">{profile.location}</span></p>
     <nav class="footer__links" aria-label="Liens réseaux">
       <a href={profile.github} rel="noopener noreferrer" target="_blank" aria-label="GitHub">GitHub</a>
       <a href={profile.linkedin} rel="noopener noreferrer" target="_blank" aria-label="LinkedIn">LinkedIn</a>

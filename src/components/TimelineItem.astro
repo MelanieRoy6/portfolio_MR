@@ -9,7 +9,6 @@ interface Props {
 const { entry, index } = Astro.props;
 const side = index % 2 === 0 ? 'left' : 'right';
 
-// Map entry to visual phase for accent-color storytelling
 const startYear = parseInt(entry.start, 10);
 let phase: string;
 if (entry.category === 'engagement') {
@@ -23,11 +22,25 @@ if (entry.category === 'engagement') {
 } else {
   phase = 'medical';
 }
+
+const enTitle     = entry.en?.title     ?? entry.title;
+const enPunchline = entry.en?.punchline ?? entry.punchline;
+const enBullets   = entry.en?.bullets   ?? entry.bullets;
+const enTags      = entry.en?.tags      ?? entry.tags;
 ---
 <article
   class={`timeline-item timeline-item--${side} timeline-item--${entry.category}`}
   data-index={index}
   data-phase={phase}
+  data-timeline-id={entry.id}
+  data-fr-title={entry.title}
+  data-en-title={enTitle}
+  data-fr-punchline={entry.punchline}
+  data-en-punchline={enPunchline}
+  data-fr-bullets={JSON.stringify(entry.bullets)}
+  data-en-bullets={JSON.stringify(enBullets)}
+  data-fr-tags={JSON.stringify(entry.tags)}
+  data-en-tags={JSON.stringify(enTags)}
   role="listitem"
   aria-label={`${entry.title} — ${entry.org}`}
 >

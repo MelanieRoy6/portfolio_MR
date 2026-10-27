@@ -5,22 +5,15 @@ import TimelineItem from './TimelineItem.astro';
 const firstYear = timeline[0]?.start ?? '';
 ---
 <section class="timeline" id="parcours" aria-labelledby="timeline-title">
-  <!--
-    Static heading scrolls past before the stage pins.
-    Without JS / with reduced-motion: items render as a normal vertical list below.
-  -->
   <div class="timeline__intro">
-    <h2 id="timeline-title">Parcours</h2>
-    <p class="timeline__subtitle">Du médico-social au développement, une reconversion en quatre actes.</p>
+    <h2 id="timeline-title" data-i18n="timeline.title">Parcours</h2>
+    <p class="timeline__subtitle" data-i18n="timeline.subtitle">Du médico-social au développement, une reconversion en quatre actes.</p>
   </div>
 
-  <!-- This element is pinned by GSAP when JS + no reduced-motion -->
   <div class="timeline__stage" aria-label="Animation de la timeline — liste statique ci-dessous">
 
-    <!-- Large year counter in background -->
     <div class="timeline__year-bg" aria-hidden="true">{firstYear}</div>
 
-    <!-- Vertical SVG line (drawn as animation progresses) -->
     <svg
       class="timeline__svg"
       aria-hidden="true"
@@ -31,13 +24,9 @@ const firstYear = timeline[0]?.start ?? '';
       <path class="timeline__svg-progress" d="M 2 0 L 2 100" />
     </svg>
 
-    <!-- Glowing cursor dot that travels along the line -->
     <div class="timeline__cursor" aria-hidden="true"></div>
-
-    <!-- Phase label (changes per item) -->
     <div class="timeline__phase-label" aria-hidden="true"></div>
 
-    <!-- Items: all stacked, animated one-at-a-time by GSAP -->
     <div class="timeline__inner" role="list">
       {timeline.map((entry, i) => (
         <TimelineItem entry={entry} index={i} />
@@ -45,10 +34,6 @@ const firstYear = timeline[0]?.start ?? '';
     </div>
   </div>
 
-  <!--
-    Static fallback (visible when JS is off or reduced-motion).
-    Screen-reader accessible at all times.
-  -->
   <noscript>
     <div class="timeline__static" role="list">
       {timeline.map((entry, i) => (

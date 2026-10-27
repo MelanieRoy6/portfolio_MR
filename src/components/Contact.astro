@@ -4,16 +4,15 @@ import { profile } from '../data/profile';
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="contact__inner">
     <h2 id="contact-title">Contact</h2>
-    <p class="contact__intro">
+    <p
+      class="contact__intro"
+      data-i18n-html="contact.intro"
+    >
       Disponible à <strong>{profile.location}</strong>, ouverte aux opportunités
       de développement junior et d'automatisation de tests.
     </p>
 
     <div class="contact__actions">
-      <!--
-        Repli sans JS : lien LinkedIn.
-        Avec JS : href recomposé depuis data-u / data-d (anti-scraping).
-      -->
       <a
         id="contact-email"
         href={profile.linkedin}
