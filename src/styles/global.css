@@ -86,10 +86,10 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--space-8);
-  background: rgb(251 246 240 / 0.88);
+  background: rgb(46 27 21 / 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgb(255 255 255 / 0.16);
   z-index: 200;
   font-family: var(--font-heading);
 }
@@ -797,7 +797,7 @@ section { scroll-margin-top: var(--nav-height); }
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: var(--color-surface);
+    background: var(--color-deep);
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-4) 0;
     opacity: 0;
@@ -927,6 +927,7 @@ section { scroll-margin-top: var(--nav-height); }
 
 /* ── Sections sombres : Contact & Footer ──────────────────────────────────
    Les tokens sont redéfinis localement, tout le reste du CSS suit. */
+.nav,
 .contact,
 .footer {
   --color-bg:         var(--color-deep);

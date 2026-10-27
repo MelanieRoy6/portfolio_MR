@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <title>Mélanie Roy</title>
+  <g>
+    <path d="M30 150 V54 L68 114 L106 54 V150" stroke="#F6C9B5" stroke-width="22"/>
+    <path d="M116 150 V50 H140 a29 29 0 0 1 0 58 H116 M142 108 L172 150" stroke="#F0906C" stroke-width="22"/>
+  </g>
+  <circle cx="141" cy="79" r="6" fill="#F0906C" stroke="none"/>
+</svg>
