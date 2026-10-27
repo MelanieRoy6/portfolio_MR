@@ -65,12 +65,7 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Set lang from localStorage before paint to avoid flash -->
-    <script is:inline>
-      (function () {
-        var lang = localStorage.getItem('portfolio-lang');
-        if (lang === 'en') document.documentElement.lang = 'en';
-      })();
-    </script>
+    <script is:inline>(function(){var l=localStorage.getItem('portfolio-lang');if(l==='en')document.documentElement.lang='en';})()</script>
   </head>
   <body>
     <slot />
