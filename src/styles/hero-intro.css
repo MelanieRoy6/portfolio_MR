@@ -30,11 +30,21 @@
 .hero__intro-btn:hover { transform: translateY(-2px); }
 
 /* ── Dessin ─────────────────────────────────────────────────────────── */
-[data-a~="ear"]     { fill: none; stroke: var(--color-metal-dark); stroke-width: 9; stroke-linecap: round; }
-[data-a~="metal"]   { fill: var(--color-metal); stroke: var(--color-metal-dark); stroke-width: 3; }
-[data-a~="metalIn"] { fill: none; stroke: var(--color-metal-dark); stroke-width: 3; }
-[data-a~="tube"]    { fill: none; stroke: var(--color-accent); stroke-width: 14; stroke-linecap: round; }
-[data-a~="junction"]{ fill: var(--color-accent); }
+[data-a~="ear"]      { fill: none; stroke: var(--color-metal-dark); stroke-width: 12; stroke-linecap: round; }
+[data-a~="earHi"]    { fill: none; stroke: var(--color-metal); stroke-width: 7; stroke-linecap: round; }
+[data-a~="earGl"]    { fill: none; stroke: #fff; opacity: 0.7; stroke-width: 2; stroke-linecap: round; }
+[data-a~="tip"]      { fill: var(--color-ink); }
+[data-a~="metal"]    { fill: var(--color-metal); stroke: var(--color-metal-dark); stroke-width: 2.5; }
+[data-a~="stemO"]    { fill: none; stroke: var(--color-metal-dark); stroke-width: 30; stroke-linecap: butt; }
+[data-a~="stem"]     { fill: none; stroke: var(--color-metal); stroke-width: 25; stroke-linecap: butt; }
+[data-a~="tubeShadow"]{ fill: none; stroke: rgb(15 27 61 / 0.16); stroke-width: 20; stroke-linecap: round; }
+[data-a~="tube"]     { fill: none; stroke: var(--color-accent); stroke-width: 16; stroke-linecap: round; }
+[data-a~="tubeHi"]   { fill: none; stroke: rgb(255 255 255 / 0.35); stroke-width: 3; stroke-linecap: round; }
+[data-a~="shadow"]   { fill: rgb(15 27 61 / 0.16); }
+[data-a~="chrome"]   { fill: url(#hi-chrome); stroke: var(--color-metal-dark); stroke-width: 2; }
+[data-a~="rubber"]   { fill: var(--color-accent); }
+[data-a~="chromeIn"] { fill: var(--color-metal); stroke: var(--color-metal-dark); stroke-width: 1.5; }
+[data-a~="sheen"]    { fill: none; stroke: rgb(255 255 255 / 0.22); stroke-width: 3; stroke-linecap: round; }
 [data-a~="membrane"]{ fill: var(--color-screen); }
 [data-a~="ring"]    { fill: none; stroke: rgb(255 255 255 / 0.16); stroke-width: 2; }
 [data-a~="rip"]     { fill: none; stroke: var(--color-accent); stroke-width: 5; opacity: 0; }
