@@ -1,34 +1,44 @@
-/* ── Tokens CSS — modifiable par l'agent GRAPHISME ─────────────────────── */
+/* ── Tokens CSS (palette Cobalt) — modifiable par l'agent GRAPHISME ─────────────────────── */
 :root {
-  /* ── Couleurs galaxy ── */
-  --color-bg:          #0f172a;
-  --color-ink:         #0f172a;   /* fonds sombres — alias de --color-bg */
-  --color-surface:     #1e293b;
+  /* ── Couleurs — palette Cobalt (clair) ── */
+  --color-bg:          #F5F8FD;
+  --color-ink:         #0F1B3D;   /* fonds sombres (sections « deep ») */
+  --color-surface:     #E8EFFA;
   --color-paper:       #ffffff;
-  --color-mist:        #eef2ff;   /* fond des sections claires (teinte indigo) */
-  --color-text:        #f1f5f9;
-  --color-text-muted:  #94a3b8;
-  --color-muted:       #64748b;   /* texte secondaire sur fond clair */
-  --color-accent:      #6366f1;   /* indigo galaxy — principal */
-  --color-accent-text: #4338ca;   /* indigo assombri : texte sur fond clair (≈ 9:1 sur blanc) */
-  --color-accent-alt:  #0891b2;   /* cyan galaxy */
-  --color-highlight:   #818cf8;   /* indigo clair : focus, burger mobile, lueur */
-  --color-border:      #334155;
+  --color-mist:        #E8EFFA;
+  --color-text:        #0F1B3D;
+  --color-text-muted:  #4A5878;   /* ≈ 6:1 sur bg, ≈ 5,8:1 sur surface */
+  --color-muted:       #4A5878;
+  --color-accent:      #1F4FD8;   /* cobalt — couleur principale (≈ 6:1 sur bg) */
+  --color-accent-text: #1F4FD8;
+  --color-accent-alt:  #0E7490;   /* cyan assombri, réservé à la phase entrepreneuriat */
+  --color-highlight:   #3B6CF0;   /* focus, burger mobile */
+  --color-border:      #CAD6EA;
+
+  /* ── Sections sombres (Compétences, Contact) et intro hero ── */
+  --color-deep:        #0F1B3D;
+  --color-on-deep:     #F5F8FD;
+  --color-on-deep-muted: #B3C0DA;
+  --color-accent-deep: #8FB0FF;   /* accent sur fond deep (≈ 7,9:1) */
+  --color-screen:      #0E1620;   /* écran de l'intro */
+  --color-device:      #14224A;   /* cadre de l'écran */
+  --color-metal:       #C3CAC6;
+  --color-metal-dark:  #8D9792;
 
   /* ── Phases timeline ── */
-  --phase-medical:           #94a3b8;   /* médico-social : gris-bleu */
-  --phase-1-sante:           #94a3b8;
-  --phase-entreprise:        #0891b2;   /* entrepreneuriat : cyan galaxy */
-  --phase-2-entrepreneuriat: #0891b2;
-  --phase-test:              #6366f1;   /* test & QA : indigo galaxy */
-  --phase-3-test:            #6366f1;
-  --phase-dev:               #818cf8;   /* dev : indigo clair galaxy */
-  --phase-4-dev:             #818cf8;
+  --phase-medical:           #5B6B8A;   /* médico-social : gris-bleu */
+  --phase-1-sante:           #5B6B8A;
+  --phase-entreprise:        #0E7490;   /* entrepreneuriat : cyan */
+  --phase-2-entrepreneuriat: #0E7490;
+  --phase-test:              #2F5BC4;   /* test & QA : bleu */
+  --phase-3-test:            #2F5BC4;
+  --phase-dev:               #1F4FD8;   /* dev : cobalt */
+  --phase-4-dev:             #1F4FD8;
 
   /* ── Typographie ── */
-  --font-heading: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-  --font-body:    'Merriweather', Georgia, serif;
-  --font-sans:    'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans:    'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    ui-monospace, 'Cascadia Code', monospace;
   --text-xs:     0.75rem;
   --text-sm:     0.875rem;
@@ -60,7 +70,7 @@
   --radius-md:     8px;
   --radius-lg:     16px;
   --radius-pill:   9999px;
-  --rule-width:    50px;           /* filet galaxy sous les titres de section */
+  --rule-width:    50px;
 
   /* ── Transitions ── */
   --duration-fast:   150ms;

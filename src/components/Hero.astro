@@ -1,24 +1,91 @@
 ---
 import { profile } from '../data/profile';
-import HeroNetwork from './HeroNetwork.astro';
+import '../styles/hero-intro.css';
 ---
-<section class="hero" aria-labelledby="hero-title">
-  <HeroNetwork />
+<section class="hero play" aria-labelledby="hero-title">
+  <div class="hero__stage">
+    <div class="hero__scene">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+      <!-- A : le stéthoscope (se pose, puis zoom sur la membrane) -->
+      <g data-a="camA">
+        <g data-a="aWrap">
+          <g data-a="aEnter">
+            <path data-a="ear" d="M520 335 C 500 250, 400 220, 345 120"></path>
+            <path data-a="ear" d="M520 335 C 540 240, 520 160, 470 85"></path>
+            <circle data-a="metal" cx="345" cy="120" r="15"></circle>
+            <circle data-a="metal" cx="470" cy="85" r="15"></circle>
+            <path data-a="tube" d="M520 335 C 520 620, 900 700, 1000 520 S 1030 440 1024 410"></path>
+            <circle data-a="junction" cx="520" cy="335" r="19"></circle>
+            <circle data-a="metal" cx="1100" cy="402.5" r="88"></circle>
+            <circle data-a="metalIn" cx="1100" cy="402.5" r="76"></circle>
+            <circle data-a="membrane" cx="1100" cy="402.5" r="68"></circle>
+            <g data-a="mdetails">
+              <circle data-a="ring" cx="1100" cy="402.5" r="46"></circle>
+              <circle data-a="ring" cx="1100" cy="402.5" r="24"></circle>
+            </g>
+            <circle data-a="rip rip1" cx="1100" cy="402.5" r="88"></circle>
+            <circle data-a="rip rip2" cx="1100" cy="402.5" r="88"></circle>
+          </g>
+        </g>
+      </g>
 
-  <div class="hero__content">
-    <p class="hero__eyebrow" data-i18n="hero.location">Nantes et alentours</p>
-    <h1 id="hero-title" class="hero__name">{profile.name}</h1>
-    <p class="hero__headline" data-i18n="hero.headline">{profile.headline}</p>
-    <p class="hero__pitch" data-i18n="hero.pitch">{profile.pitch}</p>
-    <div class="hero__actions">
-      <a href="#parcours" class="btn btn--primary" data-i18n="hero.cta">Découvrir mon parcours</a>
-      <a
-        href={profile.linkedin}
-        class="btn btn--ghost"
-        rel="noopener noreferrer"
-        target="_blank"
-        aria-label="Voir le profil LinkedIn de Mélanie Roy"
-      >LinkedIn</a>
+      <!-- B : l'écran d'ordinateur (apparaît quand la membrane remplit l'image, puis dézoome) -->
+      <g data-a="monB">
+        <circle data-a="halo" cx="1100" cy="402.5" r="340"></circle>
+        <line data-a="desk" x1="560" y1="704" x2="1600" y2="704"></line>
+        <path data-a="device" d="M1072 616 L1128 616 L1142 692 L1058 692 Z"></path>
+        <rect data-a="device" x="980" y="688" width="240" height="16" rx="8"></rect>
+        <rect data-a="device" x="772" y="187" width="656" height="431" rx="24"></rect>
+        <rect data-a="screenBg" x="800" y="215" width="600" height="375" rx="8"></rect>
+        <g data-a="scr">
+          <path data-a="bar" d="M800 249 L800 223 A8 8 0 0 1 808 215 L1392 215 A8 8 0 0 1 1400 223 L1400 249 Z"></path>
+          <circle data-a="dot" cx="822" cy="232" r="5"></circle>
+          <circle data-a="dot" cx="840" cy="232" r="5"></circle>
+          <circle data-a="dot" cx="858" cy="232" r="5"></circle>
+          <text data-a="fname" x="1100" y="237" text-anchor="middle">Melanie.cs</text>
+          <text data-a="ln code" data-l="1" x="828" y="282"><tspan data-a="kw">public class</tspan> <tspan data-a="ty">Melanie</tspan> <tspan data-a="pu">:</tspan> <tspan data-a="ty">IDeveloppeuse</tspan></text>
+          <text data-a="ln code" data-l="2" x="828" y="307"><tspan data-a="pu">&#123;</tspan></text>
+          <text data-a="ln code" data-l="3" x="828" y="332">    <tspan data-a="ty">Parcours</tspan> avant <tspan data-a="pu">=</tspan> <tspan data-a="ty">Parcours</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Soin</tspan><tspan data-a="pu">;</tspan></text>
+          <text data-a="ln code" data-l="4" x="828" y="357">    <tspan data-a="ty">Parcours</tspan> apres <tspan data-a="pu">=</tspan> <tspan data-a="ty">Parcours</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Code</tspan><tspan data-a="pu">;</tspan></text>
+          <text data-a="ln code" data-l="5" x="828" y="407">    <tspan data-a="kw">public async</tspan> <tspan data-a="ty">Task</tspan> <tspan data-a="fn">Transition</tspan><tspan data-a="pu">()</tspan></text>
+          <text data-a="ln code" data-l="6" x="828" y="432">    <tspan data-a="pu">&#123;</tspan></text>
+          <text data-a="ln code" data-l="7" x="828" y="457">        <tspan data-a="kw">await</tspan> avant<tspan data-a="pu">.</tspan><tspan data-a="fn">Ecouter</tspan><tspan data-a="pu">();</tspan></text>
+          <text data-a="ln code" data-l="8" x="828" y="482">        <tspan data-a="kw">await</tspan> apres<tspan data-a="pu">.</tspan><tspan data-a="fn">Construire</tspan><tspan data-a="pu">();</tspan></text>
+          <text data-a="ln code" data-l="9" x="828" y="507">    <tspan data-a="pu">&#125;</tspan></text>
+          <text data-a="ln code" data-l="10" x="828" y="532"><tspan data-a="pu">&#125;</tspan></text>
+          <g data-a="curWrap"><rect data-a="cursor" x="845" y="518" width="9" height="18"></rect></g>
+        </g>
+      </g>
+    </svg>
+
+    <button
+      type="button"
+      class="hero__intro-btn"
+      id="hero-intro-btn"
+      data-i18n="hero.intro.skip"
+    >Passer l'intro</button>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow hi-rise hi-r1" data-i18n="hero.location">Nantes et alentours</p>
+      <h1 id="hero-title" class="hero__name hi-rise hi-r2">{profile.name}</h1>
+      <p class="hero__lead hi-rise hi-r2" data-i18n-html="hero.lead">J'ai pris soin des gens pendant 13 ans. Aujourd'hui, je prends soin du <em>code</em>.</p>
+      <p class="hero__headline hi-rise hi-r3" data-i18n="hero.headline">{profile.headline}</p>
+      <p class="hero__pitch hi-rise hi-r3" data-i18n="hero.pitch">{profile.pitch}</p>
+      <div class="hero__actions hi-rise hi-r4">
+        <a href="#parcours" class="btn btn--primary" data-i18n="hero.cta">Découvrir mon parcours</a>
+        <a
+          href={profile.linkedin}
+          class="btn btn--ghost"
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="Voir le profil LinkedIn de Mélanie Roy"
+        >LinkedIn</a>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import '../scripts/hero-intro';
+</script>
