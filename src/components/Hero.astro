@@ -56,29 +56,70 @@ import '../styles/hero-intro.css';
 
       <!-- B : l'écran d'ordinateur (apparaît quand la membrane remplit l'image, puis dézoome) -->
       <g data-a="monB">
+        <defs>
+          <linearGradient id="hi-desk" x1="0" y1="0" x2="1" y2="0">
+            <stop data-a="gd0" offset="0"></stop>
+            <stop data-a="gd1" offset="0.35"></stop>
+          </linearGradient>
+          <linearGradient id="hi-neck" x1="0" y1="0" x2="1" y2="0">
+            <stop data-a="gn0" offset="0"></stop>
+            <stop data-a="gn1" offset="0.5"></stop>
+            <stop data-a="gn0" offset="1"></stop>
+          </linearGradient>
+        </defs>
         <circle data-a="halo" cx="1100" cy="402.5" r="340"></circle>
+        <!-- bureau, ombre portée et clavier -->
+        <rect data-a="deskBand" x="560" y="704" width="1040" height="196"></rect>
         <line data-a="desk" x1="560" y1="704" x2="1600" y2="704"></line>
-        <path data-a="device" d="M1072 616 L1128 616 L1142 692 L1058 692 Z"></path>
-        <rect data-a="device" x="980" y="688" width="240" height="16" rx="8"></rect>
+        <ellipse data-a="cast" cx="1100" cy="710" rx="200" ry="9"></ellipse>
+        <rect data-a="kbd" x="900" y="722" width="400" height="36" rx="7"></rect>
+        <line data-a="keys" x1="914" y1="731" x2="1286" y2="731"></line>
+        <line data-a="keys" x1="914" y1="741" x2="1286" y2="741"></line>
+        <line data-a="keysBar" x1="990" y1="751" x2="1210" y2="751"></line>
+        <!-- pied -->
+        <path data-a="neck" d="M1074 616 L1126 616 L1140 692 L1060 692 Z"></path>
+        <path data-a="base" d="M960 704 L960 698 Q960 688 972 688 L1228 688 Q1240 688 1240 698 L1240 704 Z"></path>
+        <line data-a="baseHi" x1="976" y1="690" x2="1224" y2="690"></line>
+        <!-- écran : châssis, cadre noir, dalle -->
         <rect data-a="device" x="772" y="187" width="656" height="431" rx="24"></rect>
+        <path data-a="chassisHi" d="M798 188.5 L1402 188.5"></path>
+        <rect data-a="bezelIn" x="786" y="201" width="628" height="403" rx="12"></rect>
         <rect data-a="screenBg" x="800" y="215" width="600" height="375" rx="8"></rect>
+        <circle data-a="cam" cx="1100" cy="208" r="3"></circle>
+        <circle data-a="led" cx="1100" cy="611" r="2.5"></circle>
         <g data-a="scr">
           <path data-a="bar" d="M800 249 L800 223 A8 8 0 0 1 808 215 L1392 215 A8 8 0 0 1 1400 223 L1400 249 Z"></path>
           <circle data-a="dot" cx="822" cy="232" r="5"></circle>
           <circle data-a="dot" cx="840" cy="232" r="5"></circle>
           <circle data-a="dot" cx="858" cy="232" r="5"></circle>
           <text data-a="fname" x="1100" y="237" text-anchor="middle">Melanie.cs</text>
-          <text data-a="ln code" data-l="1" x="828" y="282"><tspan data-a="kw">public class</tspan> <tspan data-a="ty">Melanie</tspan> <tspan data-a="pu">:</tspan> <tspan data-a="ty">IDeveloppeuse</tspan></text>
+          <rect data-a="hiline" x="800" y="515" width="600" height="25"></rect>
+          <text data-a="gutter" x="818" y="282" text-anchor="end">1</text>
+          <text data-a="gutter" x="818" y="307" text-anchor="end">2</text>
+          <text data-a="gutter" x="818" y="332" text-anchor="end">3</text>
+          <text data-a="gutter" x="818" y="357" text-anchor="end">4</text>
+          <text data-a="gutter" x="818" y="382" text-anchor="end">5</text>
+          <text data-a="gutter" x="818" y="407" text-anchor="end">6</text>
+          <text data-a="gutter" x="818" y="432" text-anchor="end">7</text>
+          <text data-a="gutter" x="818" y="457" text-anchor="end">8</text>
+          <text data-a="gutter" x="818" y="482" text-anchor="end">9</text>
+          <text data-a="gutter" x="818" y="507" text-anchor="end">10</text>
+          <text data-a="gutter" x="818" y="532" text-anchor="end">11</text>
+          <text data-a="ln code" data-l="1" x="828" y="282"><tspan data-a="kw">public class</tspan> <tspan data-a="ty">Melanie</tspan> <tspan data-a="pu">:</tspan> <tspan data-a="ty">IDeveloper</tspan><tspan data-a="pu">,</tspan> <tspan data-a="ty">IQA</tspan></text>
           <text data-a="ln code" data-l="2" x="828" y="307"><tspan data-a="pu">&#123;</tspan></text>
-          <text data-a="ln code" data-l="3" x="828" y="332">    <tspan data-a="ty">Parcours</tspan> avant <tspan data-a="pu">=</tspan> <tspan data-a="ty">Parcours</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Soin</tspan><tspan data-a="pu">;</tspan></text>
-          <text data-a="ln code" data-l="4" x="828" y="357">    <tspan data-a="ty">Parcours</tspan> apres <tspan data-a="pu">=</tspan> <tspan data-a="ty">Parcours</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Code</tspan><tspan data-a="pu">;</tspan></text>
+          <text data-a="ln code" data-l="3" x="828" y="332">    <tspan data-a="ty">Journey</tspan> before <tspan data-a="pu">=</tspan> <tspan data-a="ty">Journey</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Care</tspan><tspan data-a="pu">;</tspan></text>
+          <text data-a="ln code" data-l="4" x="828" y="357">    <tspan data-a="ty">Journey</tspan> after <tspan data-a="pu">=</tspan> <tspan data-a="ty">Journey</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Code</tspan><tspan data-a="pu">;</tspan></text>
           <text data-a="ln code" data-l="5" x="828" y="407">    <tspan data-a="kw">public async</tspan> <tspan data-a="ty">Task</tspan> <tspan data-a="fn">Transition</tspan><tspan data-a="pu">()</tspan></text>
           <text data-a="ln code" data-l="6" x="828" y="432">    <tspan data-a="pu">&#123;</tspan></text>
-          <text data-a="ln code" data-l="7" x="828" y="457">        <tspan data-a="kw">await</tspan> avant<tspan data-a="pu">.</tspan><tspan data-a="fn">Ecouter</tspan><tspan data-a="pu">();</tspan></text>
-          <text data-a="ln code" data-l="8" x="828" y="482">        <tspan data-a="kw">await</tspan> apres<tspan data-a="pu">.</tspan><tspan data-a="fn">Construire</tspan><tspan data-a="pu">();</tspan></text>
+          <text data-a="ln code" data-l="7" x="828" y="457">        <tspan data-a="kw">await</tspan> before<tspan data-a="pu">.</tspan><tspan data-a="fn">Listen</tspan><tspan data-a="pu">();</tspan></text>
+          <text data-a="ln code" data-l="8" x="828" y="482">        <tspan data-a="kw">await</tspan> after<tspan data-a="pu">.</tspan><tspan data-a="fn">Build</tspan><tspan data-a="pu">();</tspan></text>
           <text data-a="ln code" data-l="9" x="828" y="507">    <tspan data-a="pu">&#125;</tspan></text>
           <text data-a="ln code" data-l="10" x="828" y="532"><tspan data-a="pu">&#125;</tspan></text>
           <g data-a="curWrap"><rect data-a="cursor" x="845" y="518" width="9" height="18"></rect></g>
+          <path data-a="status" d="M800 568 L1400 568 L1400 582 A8 8 0 0 1 1392 590 L808 590 A8 8 0 0 1 800 582 Z"></path>
+          <text data-a="statusTx" x="816" y="583">C#</text>
+          <text data-a="statusTx" x="1384" y="583" text-anchor="end">UTF-8    Ln 11, Col 2</text>
+          <path data-a="glare" d="M800 215 L1030 215 L880 590 L800 590 Z"></path>
         </g>
       </g>
     </svg>
