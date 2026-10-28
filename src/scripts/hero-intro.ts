@@ -23,6 +23,7 @@ function initHeroIntro(): void {
   function finish(): void {
     window.clearTimeout(timer);
     hero?.classList.remove('play');
+    void hero?.offsetHeight; // force reflow — évite le glitch visuel sur mobile
     setLabel('hero.intro.replay');
   }
 
