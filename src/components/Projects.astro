@@ -1,0 +1,100 @@
+---
+import { projects, type ProjectCategory } from '../data/projects';
+import { profile } from '../data/profile';
+import '../styles/projects.css';
+
+const filters: { id: 'all' | ProjectCategory; label: string; i18n: string }[] = [
+  { id: 'all', label: 'Tous', i18n: 'projects.filter.all' },
+  { id: 'dev', label: 'Développement', i18n: 'projects.filter.dev' },
+  { id: 'tests', label: 'Tests logiciels', i18n: 'projects.filter.tests' },
+  { id: 'auto', label: 'Automatisation', i18n: 'projects.filter.auto' },
+];
+const categoryLabels: Record<ProjectCategory, { fr: string; i18n: string }> = {
+  dev: { fr: 'Développement', i18n: 'projects.filter.dev' },
+  tests: { fr: 'Tests logiciels', i18n: 'projects.filter.tests' },
+  auto: { fr: 'Automatisation', i18n: 'projects.filter.auto' },
+};
+// Un filtre n'est proposé que s'il correspond à au moins un projet.
+const usedFilters = filters.filter(
+  (f) => f.id === 'all' || projects.some((p) => p.categories.includes(f.id as ProjectCategory)),
+);
+const spans = ['7', '5', '5', '7'];
+const hasProjects = projects.length > 0;
+---
+<section class="projects section" id="projets" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="projects__head reveal">
+      <div>
+        <p class="section-eyebrow"><span data-i18n="projects.num">03</span> / <span data-i18n="projects.eyebrow">Projets</span></p>
+        <h2 id="projects-title" class="section-title" data-i18n="projects.title">Projets</h2>
+      </div>
+
+      {hasProjects && usedFilters.length > 2 && (
+        <div class="projects__filters" role="group" aria-label="Filtrer les projets">
+          {usedFilters.map((f) => (
+            <button type="button" class="projects__filter" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'} data-i18n={f.i18n}>{f.label}</button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    {hasProjects ? (
+      <>
+        <p class="sr-only" role="status" aria-live="polite" id="projects-status"></p>
+        <div class="projects__grid">
+          {projects.map((p, i) => (
+            <article
+              class="project-card reveal"
+              data-span={spans[i % spans.length]}
+              data-categories={p.categories.join(' ')}
+            >
+              <div class="project-card__cover">
+                {p.image ? (
+                  <img class="project-card__img" src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width="1280" height="800" />
+                ) : (
+                  <div class="project-card__pattern" aria-hidden="true"></div>
+                )}
+                <p class="project-card__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
+              </div>
+              <div class="project-card__body">
+                <p class="project-card__cats">
+                  {p.categories.map((c, ci) => (
+                    <>{ci > 0 && ' · '}<span data-i18n={categoryLabels[c].i18n}>{categoryLabels[c].fr}</span></>
+                  ))}
+                </p>
+                <h3 class="project-card__name" data-fr={p.name} data-en={p.en?.name ?? p.name}>{p.name}</h3>
+                <p class="project-card__desc" data-fr={p.description} data-en={p.en?.description ?? p.description}>{p.description}</p>
+                <p class="project-card__meta">
+                  {p.role && <><span data-i18n="projects.role">Rôle</span> : <span data-fr={p.role} data-en={p.en?.role ?? p.role}>{p.role}</span> · </>}
+                  {p.tech.join(' · ')}
+                </p>
+                {p.links && p.links.length > 0 && (
+                  <p class="project-card__links">
+                    {p.links.map((l) => (
+                      <a href={l.url} target="_blank" rel="noopener noreferrer">{l.label}<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a>
+                    ))}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="projects__empty reveal">
+        <p class="projects__empty-title" data-i18n="projects.empty.title">Mes projets arrivent bientôt.</p>
+        <p class="projects__empty-text" data-i18n="projects.empty.text">En attendant, mon code est visible sur GitHub.</p>
+        <a href={profile.github} class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="projects.empty.cta">Voir mon GitHub</span>
+          <svg class="icon icon-go" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+{hasProjects && (
+  <script>
+    import '../scripts/projects-filter';
+  </script>
+)}

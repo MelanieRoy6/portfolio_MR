@@ -1,0 +1,46 @@
+---
+import { timeline } from '../data/timeline';
+import '../styles/timeline.css';
+---
+<section class="timeline section" id="parcours" aria-labelledby="timeline-title">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow"><span data-i18n="timeline.num">04</span> / <span data-i18n="timeline.eyebrow">Parcours</span></p>
+      <h2 id="timeline-title" class="section-title" data-i18n="timeline.title">Parcours</h2>
+      <p class="timeline__subtitle" data-i18n="timeline.subtitle">Du médico-social au développement, une reconversion en quatre actes.</p>
+    </div>
+
+    <ol class="timeline__list">
+      {timeline.map((entry) => (
+        <li
+          class={`timeline-item timeline-item--${entry.category} reveal`}
+          data-timeline-id={entry.id}
+          data-fr-title={entry.title}
+          data-en-title={entry.en?.title ?? entry.title}
+          data-fr-punchline={entry.punchline}
+          data-en-punchline={entry.en?.punchline ?? entry.punchline}
+          data-fr-bullets={JSON.stringify(entry.bullets)}
+          data-en-bullets={JSON.stringify(entry.en?.bullets ?? entry.bullets)}
+          data-fr-tags={JSON.stringify(entry.tags)}
+          data-en-tags={JSON.stringify(entry.en?.tags ?? entry.tags)}
+        >
+          <div class="timeline-item__meta">
+            <time class="timeline-item__year" datetime={entry.start}>{entry.start}</time>
+            {entry.end && entry.end !== entry.start && <span class="timeline-item__year-end">– {entry.end}</span>}
+          </div>
+          <div class="timeline-item__card">
+            <h3 class="timeline-item__title">{entry.title}</h3>
+            <p class="timeline-item__org">{entry.org}{entry.place ? ` · ${entry.place}` : ''}</p>
+            <p class="timeline-item__punchline">{entry.punchline}</p>
+            <ul class="timeline-item__bullets" role="list">
+              {entry.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <ul class="timeline-item__tags" role="list">
+              {entry.tags.map((t) => <li class="tag">{t}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

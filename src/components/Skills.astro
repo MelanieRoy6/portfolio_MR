@@ -1,26 +1,39 @@
 ---
 import { skills } from '../data/skills';
 import { profile } from '../data/profile';
+import '../styles/skills.css';
 
-// Mise en page « bento » : Développement en grand, le dernier groupe en largeur.
-const BIG_LABEL = 'Développement';
-const ordered = [
-  ...skills.filter((g) => g.label === BIG_LABEL),
-  ...skills.filter((g) => g.label !== BIG_LABEL),
-];
-const lastIndex = ordered.length - 1;
+// Deux « univers » (développement / tests & qualité) + une bande d'outils.
+// Le rôle de chaque groupe est déduit de son libellé dans src/data/skills.ts.
+const DEV_LABEL = 'Développement';
+const TOOLS_LABEL = 'Outils et CI';
+
+type Role = 'dev' | 'qa' | 'tools';
+const roleOf = (label: string): Role =>
+  label === DEV_LABEL ? 'dev' : label === TOOLS_LABEL ? 'tools' : 'qa';
+
+const order: Record<Role, number> = { dev: 0, qa: 1, tools: 2 };
+const groups = skills
+  .map((group) => ({ group, role: roleOf(group.label) }))
+  .sort((a, b) => order[a.role] - order[b.role]);
+
+const icons: Record<Role, string> = {
+  dev: '<path d="m18 16 4-4-4-4" /><path d="m6 8-4 4 4 4" /><path d="m14.5 4-5 16" />',
+  qa: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" />',
+  tools: '<line x1="6" x2="6" y1="3" y2="15" /><circle cx="18" cy="6" r="3" /><circle cx="6" cy="18" r="3" /><path d="M18 9a9 9 0 0 1-9 9" />',
+};
 ---
-<section class="skills" id="competences" aria-labelledby="skills-title">
-  <div class="skills__inner">
-    <p class="section-eyebrow" data-i18n="skills.eyebrow">Compétences</p>
-    <h2 id="skills-title" data-i18n="skills.title">Ce que j'utilise, ce que j'explore</h2>
+<section class="skills section" id="competences" aria-labelledby="skills-title">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-eyebrow"><span data-i18n="skills.num">02</span> / <span data-i18n="skills.eyebrow">Compétences</span></p>
+      <h2 id="skills-title" class="section-title skills__title" data-i18n="skills.title">Ce que j'utilise, ce que j'explore</h2>
+    </div>
+
     <div class="skills__groups">
-      {ordered.map((group, i) => (
+      {groups.map(({ group, role }) => (
         <article
-          class:list={[
-            'skills__group',
-            { 'skills__group--big': group.label === BIG_LABEL, 'skills__group--wide': i === lastIndex && lastIndex > 2 },
-          ]}
+          class={`skills__group skills__group--${role} reveal`}
           data-skill-group
           data-fr-label={group.label}
           data-en-label={group.en?.label ?? group.label}
@@ -29,21 +42,30 @@ const lastIndex = ordered.length - 1;
           data-fr-desc={group.description ?? ''}
           data-en-desc={group.en?.description ?? group.description ?? ''}
         >
-          <h3 class="skills__group-label">{group.label}</h3>
-          {group.description && (
-            <p class="skills__group-desc" data-skill-desc>{group.description}</p>
+          {role === 'dev' && (
+            <svg class="skills__watermark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" set:html={icons.dev} />
+          )}
+          <div class="skills__head">
+            <span class="skills__icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false" set:html={icons[role]} />
+            </span>
+            <div class="skills__head-text">
+              <h3 class="skills__group-label">{group.label}</h3>
+              {group.description && role !== 'dev' && (
+                <p class="skills__group-desc" data-skill-desc>{group.description}</p>
+              )}
+            </div>
+          </div>
+          {group.description && role === 'dev' && (
+            <p class="skills__group-desc skills__group-desc--long" data-skill-desc>{group.description}</p>
           )}
           <ul class="skills__items" role="list">
-            {group.items.map((item) => <li class="tag">{item}</li>)}
+            {group.items.map((item) => (
+              <li class="skills__item"><span class="skills__mark" aria-hidden="true"></span>{item}</li>
+            ))}
           </ul>
-          {group.label === BIG_LABEL && (
-            <a
-              href={profile.github}
-              class="skills__github-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="skills.github"
-            >
+          {role === 'dev' && (
+            <a href={profile.github} class="skills__link" target="_blank" rel="noopener noreferrer" data-i18n="skills.github">
               Projets visibles sur GitHub →
             </a>
           )}

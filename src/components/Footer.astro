@@ -3,7 +3,8 @@ import { profile } from '../data/profile';
 const year = new Date().getFullYear();
 ---
 <footer class="footer">
-  <div class="footer__inner">
+  <div class="container footer__inner">
+    <img class="footer__icon" src="/images/logo-icon.png" alt="" width="36" height="36" />
     <p class="footer__copy">© {year} {profile.name} — <span data-i18n="footer.location">{profile.location}</span></p>
     <nav class="footer__links" aria-label="Liens réseaux">
       <a href={profile.github} rel="noopener noreferrer" target="_blank" aria-label="GitHub">GitHub</a>
