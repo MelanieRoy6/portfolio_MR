@@ -5,19 +5,13 @@ import '../styles/projects.css';
 
 const filters: { id: 'all' | ProjectCategory; label: string; i18n: string }[] = [
   { id: 'all', label: 'Tous', i18n: 'projects.filter.all' },
-  { id: 'dev', label: 'Développement', i18n: 'projects.filter.dev' },
-  { id: 'tests', label: 'Tests logiciels', i18n: 'projects.filter.tests' },
-  { id: 'auto', label: 'Automatisation', i18n: 'projects.filter.auto' },
+  { id: 'entreprise', label: 'En entreprise', i18n: 'projects.filter.entreprise' },
+  { id: 'perso', label: 'Projets perso', i18n: 'projects.filter.perso' },
 ];
 const categoryLabels: Record<ProjectCategory, { fr: string; i18n: string }> = {
-  dev: { fr: 'Développement', i18n: 'projects.filter.dev' },
-  tests: { fr: 'Tests logiciels', i18n: 'projects.filter.tests' },
-  auto: { fr: 'Automatisation', i18n: 'projects.filter.auto' },
+  entreprise: { fr: 'En entreprise', i18n: 'projects.filter.entreprise' },
+  perso: { fr: 'Projet perso', i18n: 'projects.cat.perso' },
 };
-// Un filtre n'est proposé que s'il correspond à au moins un projet.
-const usedFilters = filters.filter(
-  (f) => f.id === 'all' || projects.some((p) => p.categories.includes(f.id as ProjectCategory)),
-);
 const spans = ['7', '5', '5', '7'];
 const hasProjects = projects.length > 0;
 ---
@@ -29,9 +23,9 @@ const hasProjects = projects.length > 0;
         <h2 id="projects-title" class="section-title" data-i18n="projects.title">Projets</h2>
       </div>
 
-      {hasProjects && usedFilters.length > 2 && (
+      {hasProjects && (
         <div class="projects__filters" role="group" aria-label="Filtrer les projets">
-          {usedFilters.map((f) => (
+          {filters.map((f) => (
             <button type="button" class="projects__filter" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'} data-i18n={f.i18n}>{f.label}</button>
           ))}
         </div>
@@ -41,6 +35,7 @@ const hasProjects = projects.length > 0;
     {hasProjects ? (
       <>
         <p class="sr-only" role="status" aria-live="polite" id="projects-status"></p>
+        <p class="projects__none" id="projects-none" hidden data-i18n="projects.filter.none">Projets perso à venir bientôt.</p>
         <div class="projects__grid">
           {projects.map((p, i) => (
             <article
@@ -49,19 +44,27 @@ const hasProjects = projects.length > 0;
               data-categories={p.categories.join(' ')}
             >
               <div class="project-card__cover">
-                {p.image ? (
-                  <img class="project-card__img" src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width="1280" height="800" />
+                {p.images && p.images.length > 0 ? (
+                  <img class="project-card__img" src={p.images[0].src} alt={p.images[0].alt} loading="lazy" decoding="async" width="1280" height="800" />
                 ) : (
                   <div class="project-card__pattern" aria-hidden="true"></div>
                 )}
                 <p class="project-card__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
               </div>
+              {p.images && p.images.length > 1 && (
+                <ul class="project-card__thumbs" role="list">
+                  {p.images.slice(1, 3).map((im) => (
+                    <li><img src={im.src} alt={im.alt} loading="lazy" decoding="async" width="640" height="400" /></li>
+                  ))}
+                </ul>
+              )}
               <div class="project-card__body">
                 <p class="project-card__cats">
                   {p.categories.map((c, ci) => (
                     <>{ci > 0 && ' · '}<span data-i18n={categoryLabels[c].i18n}>{categoryLabels[c].fr}</span></>
                   ))}
                 </p>
+                {p.context && <p class="project-card__context" data-fr={p.context} data-en={p.en?.context ?? p.context}>{p.context}</p>}
                 <h3 class="project-card__name" data-fr={p.name} data-en={p.en?.name ?? p.name}>{p.name}</h3>
                 <p class="project-card__desc" data-fr={p.description} data-en={p.en?.description ?? p.description}>{p.description}</p>
                 <p class="project-card__meta">
