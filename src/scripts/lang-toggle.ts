@@ -23,6 +23,12 @@ function applyLang(lang: Lang): void {
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
 
+  // Projects (data-fr / data-en)
+  document.querySelectorAll<HTMLElement>('[data-fr][data-en]').forEach((el) => {
+    const v = lang === 'en' ? el.dataset.en : el.dataset.fr;
+    if (v !== undefined) el.textContent = v;
+  });
+
   // Timeline items
   document.querySelectorAll<HTMLElement>('[data-timeline-id]').forEach((article) => {
     const d = article.dataset;
@@ -62,7 +68,7 @@ function applyLang(lang: Lang): void {
     if (label    && labelEl)  labelEl.textContent = label;
     if (itemsRaw && itemsEl) {
       const items = JSON.parse(itemsRaw) as string[];
-      itemsEl.innerHTML = items.map((item) => `<li class="tag">${item}</li>`).join('');
+      itemsEl.innerHTML = items.map((item) => `<li class="skills__item"><span class="skills__mark" aria-hidden="true"></span>${item}</li>`).join('');
     }
     if (descEl) descEl.textContent = desc ?? '';
   });

@@ -1,0 +1,97 @@
+/* ── Compétences ──────────────────────────────────────────────────────── */
+.skills { background: var(--off); }
+.skills__title { max-width: 760px; }
+
+/* Composition asymétrique : grand panneau sombre + panneau clair, bande d'outils dessous */
+.skills__groups {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.skills__group--dev   { grid-column: span 7; }
+.skills__group--qa    { grid-column: span 5; }
+.skills__group--tools { grid-column: 1 / -1; }
+
+.skills__group {
+  position: relative; overflow: hidden;
+  border-radius: var(--radius-lg); padding: 2.75rem;
+}
+
+.skills__head { position: relative; display: flex; align-items: center; gap: 1rem; }
+.skills__icon {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  width: 56px; height: 56px; border-radius: 16px;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+.skills__icon .icon { width: 28px; height: 28px; stroke-width: 1.8; }
+.skills__group:hover .skills__icon { transform: rotate(-8deg) scale(1.08); }
+
+.skills__group-label {
+  font-weight: 800; font-size: clamp(1.9rem, 3.2vw, 2.75rem); line-height: 1.02; letter-spacing: -0.035em;
+}
+.skills__group-desc { margin-top: var(--space-2); font-size: 1.05rem; line-height: 1.7; }
+.skills__group-desc--long { position: relative; margin-top: 1.4rem; max-width: 560px; }
+
+.skills__items {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 0 1.75rem;
+  margin-top: 2.25rem;
+  font: 500 0.94rem/1.3 var(--font-mono);
+}
+.skills__item {
+  display: flex; align-items: center; gap: var(--space-3); padding-block: 0.6rem;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.skills__mark { width: 7px; height: 7px; flex: none; border-radius: 2px; background: var(--emerald); transition: background var(--duration-fast); }
+.skills__item:hover { transform: translateX(5px); }
+.skills__item:hover .skills__mark { background: var(--teal); }
+
+/* Univers 01 — Développement (sombre) */
+.skills__group--dev { background: var(--forest); color: var(--white); }
+.skills__group--dev .skills__icon { background: var(--emerald); color: var(--white); }
+.skills__group--dev .skills__group-desc { color: var(--on-dark-soft); }
+.skills__group--dev .skills__item { border-top: 1px solid var(--on-dark-line); }
+.skills__watermark {
+  position: absolute; right: -30px; bottom: -40px; width: 340px; height: 340px; opacity: 0.55;
+  fill: none; stroke: var(--teal); stroke-width: 0.35; stroke-linecap: round; stroke-linejoin: round;
+  pointer-events: none;
+}
+.skills__link {
+  position: relative; display: inline-flex; align-items: center; min-height: 44px; margin-top: 1.75rem;
+  font-weight: 700; color: var(--mint);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1.5px; background-repeat: no-repeat; background-position: 0 85%;
+  transition: background-size var(--duration-fast);
+}
+.skills__link:hover { background-size: 100% 4px; }
+
+/* Univers 02 — Tests & qualité (clair) */
+.skills__group--qa { background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow-panel); color: var(--ink); }
+.skills__group--qa .skills__icon { background: var(--pale); color: var(--emerald); }
+.skills__group--qa .skills__group-label { color: var(--forest); }
+.skills__group--qa .skills__group-desc { color: var(--muted-2); }
+.skills__group--qa .skills__item { border-top: 1px solid var(--line); }
+
+/* Bande « Outils et CI » */
+.skills__group--tools {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2.5rem;
+  background: var(--pale); border: 1px solid var(--mint); padding: 1.75rem 2.25rem;
+}
+.skills__group--tools .skills__head { flex: 1 1 260px; }
+.skills__group--tools .skills__icon { background: var(--white); color: var(--emerald); width: 52px; height: 52px; border-radius: 14px; }
+.skills__group--tools .skills__group-label { font-size: 1.6rem; color: var(--forest); letter-spacing: -0.03em; }
+.skills__group--tools .skills__group-desc { margin-top: 2px; font-size: 1rem; color: var(--muted-2); }
+.skills__group--tools .skills__items {
+  display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; margin-top: 0; color: var(--forest);
+}
+
+@media (max-width: 860px) {
+  .skills__group--dev, .skills__group--qa { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .skills__group { padding: 1.75rem 1.5rem; }
+  .skills__group--tools { padding: 1.5rem; }
+}

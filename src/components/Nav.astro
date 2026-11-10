@@ -1,125 +1,64 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+// Le bouton « Télécharger mon CV » n'apparaît que si le fichier existe :
+// il suffit de déposer le PDF dans public/ sous ce nom.
+const CV_PATH = '/cv-melanie-roy.pdf';
+const hasCv = existsSync(join(process.cwd(), 'public', CV_PATH));
 ---
-<nav class="nav" aria-label="Navigation principale">
-  <a href="/" class="nav__logo" aria-label="Accueil — Mélanie Roy">
-    <img
-      src="/logo-light.svg"
-      alt="Mélanie Roy"
-      width="40"
-      height="40"
-      class="nav__logo-img"
-    />
-  </a>
+<a class="skip-link" href="#main" data-i18n="nav.skip">Aller au contenu</a>
 
-  <div class="nav__right">
-    <ul class="nav__links" id="nav-menu" role="list">
-      <li><a href="#a-propos"    class="nav__link" data-i18n="nav.about">À propos</a></li>
-      <li><a href="#parcours"    class="nav__link" data-i18n="nav.parcours">Parcours</a></li>
-      <li><a href="#competences" class="nav__link" data-i18n="nav.competences">Compétences</a></li>
-      <li><a href="#contact"     class="nav__link" data-i18n="nav.contact">Contact</a></li>
-    </ul>
+<header class="nav">
+  <div class="container nav__bar">
+    <a href="#accueil" class="nav__logo" aria-label="Accueil — Mélanie Roy">
+      <img
+        class="nav__logo-img nav__logo-img--lockup"
+        src="/images/logo-lockup.png"
+        alt="Mélanie ROY — Testeuse Logiciel & Développeuse"
+        width="605"
+        height="163"
+      />
+      <img
+        class="nav__logo-img nav__logo-img--mark"
+        src="/images/logo-mark.png"
+        alt="Logo MR de Mélanie Roy"
+        width="400"
+        height="185"
+      />
+    </a>
 
-    <button
-      id="lang-toggle"
-      class="nav__lang-btn"
-      aria-label="Switch to English"
-      type="button"
-    >EN</button>
+    <nav class="nav__links" id="nav-menu" aria-label="Navigation principale">
+      <a href="#accueil"     class="nav__link" data-i18n="nav.home">Accueil</a>
+      <a href="#a-propos"    class="nav__link" data-i18n="nav.about">À propos</a>
+      <a href="#competences" class="nav__link" data-i18n="nav.competences">Compétences</a>
+      <a href="#projets"     class="nav__link" data-i18n="nav.projects">Projets</a>
+      <a href="#parcours"    class="nav__link" data-i18n="nav.parcours">Parcours</a>
+      <a href="#contact"     class="nav__link" data-i18n="nav.contact">Contact</a>
+    </nav>
 
-    <button
-      class="nav__toggle"
-      aria-expanded="false"
-      aria-controls="nav-menu"
-      aria-label="Ouvrir le menu"
-      type="button"
-    >
-      <span class="nav__toggle-bar" aria-hidden="true"></span>
-      <span class="nav__toggle-bar" aria-hidden="true"></span>
-      <span class="nav__toggle-bar" aria-hidden="true"></span>
-    </button>
+    <div class="nav__actions">
+      {hasCv && (
+        <a class="btn btn--ghost btn--sm nav__cv" href={CV_PATH} download>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
+          <span class="nav__cv-label" data-i18n="nav.cv">Télécharger mon CV</span>
+        </a>
+      )}
+      <button id="lang-toggle" class="nav__lang-btn" type="button" aria-label="Switch to English">EN</button>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Menu de navigation"
+      >
+        <svg class="icon icon-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
   </div>
-</nav>
-
-<style>
-  .nav__right {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
-  }
-
-  .nav__lang-btn {
-    background: transparent;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-    cursor: pointer;
-    font-family: var(--font-heading);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    padding: 5px 9px;
-    text-transform: uppercase;
-    transition:
-      border-color var(--duration-fast),
-      color var(--duration-fast),
-      background var(--duration-fast);
-    flex-shrink: 0;
-  }
-
-  .nav__lang-btn:hover {
-    border-color: var(--color-accent);
-    color: var(--color-highlight);
-    background: rgb(240 144 108 / 0.12);
-  }
-
-  /* Mobile: hamburger visible, links become dropdown */
-  @media (max-width: 768px) {
-    .nav__lang-btn {
-      /* stay visible next to hamburger on mobile */
-      order: 1;
-    }
-  }
-</style>
+</header>
 
 <script>
-  const btn = document.querySelector<HTMLButtonElement>('.nav__toggle');
-  const menu = document.getElementById('nav-menu');
-
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', String(open));
-      btn.classList.toggle('is-open', open);
-    });
-
-    menu.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        menu.classList.remove('is-open');
-        btn.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Highlight active section link on scroll
-  const sections = ['parcours', 'competences', 'contact'].map((id) =>
-    document.getElementById(id)
-  );
-  const links = document.querySelectorAll<HTMLAnchorElement>('.nav__link');
-
-  function updateActive(): void {
-    const scrollY = window.scrollY + 80;
-    let active = '';
-    sections.forEach((section) => {
-      if (section && section.offsetTop <= scrollY) active = section.id;
-    });
-    links.forEach((link) => {
-      const target = link.getAttribute('href')?.replace('#', '') ?? '';
-      link.classList.toggle('is-active', target === active);
-    });
-  }
-
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  import '../scripts/nav';
 </script>

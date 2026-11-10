@@ -1,31 +1,76 @@
 ---
+import '../styles/about.css';
 ---
-<section class="about" id="a-propos" aria-labelledby="about-title">
-  <div class="about__inner">
-    <div class="about__photo">
-      <img src="/me.png" alt="Portrait de Mélanie Roy" width="300" height="300" />
-    </div>
-    <div class="about__text">
-      <p class="section-eyebrow" data-i18n="about.eyebrow">À propos</p>
-      <h2 id="about-title" class="about__quote" data-i18n-html="about.quote">« Écouter d'abord, <em>construire</em> ensuite. »</h2>
-      <p class="about__pitch" data-i18n="about.text">Pendant 13 ans, j'ai accompagné des personnes au quotidien : observer, rassurer, expliquer simplement. Ces réflexes me servent aujourd'hui pour comprendre un besoin, traquer un bug et travailler en équipe.</p>
-    </div>
-  </div>
+<section class="about section" id="a-propos" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__photo reveal">
+        <div class="about__arch-offset" aria-hidden="true"></div>
+        <div class="about__arch">
+          <img
+            src="/me.jpg"
+            alt="Mélanie Roy, portrait en noir et blanc"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <p class="about__place">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+          <span data-i18n="hero.location">Nantes et alentours</span>
+        </p>
+      </div>
 
-  <dl class="about__stats">
-    <div class="about__stat">
-      <dt class="about__stat-n" data-i18n="about.stat1.n">13 ans</dt>
-      <dd class="about__stat-l" data-i18n="about.stat1.l">aide-soignante dans le secteur médico-social</dd>
+      <div class="about__text reveal">
+        <p class="section-eyebrow"><span data-i18n="about.num">01</span> / <span data-i18n="about.eyebrow">À propos</span></p>
+        <h2 id="about-title" class="section-title about__quote" data-i18n-html="about.quote">« Écouter d'abord, <em>construire</em> ensuite. »</h2>
+        <p class="about__pitch" data-i18n="about.text">Pendant 13 ans, j'ai accompagné des personnes au quotidien : observer, rassurer, expliquer simplement. Ces réflexes me servent aujourd'hui pour comprendre un besoin, traquer un bug et travailler en équipe.</p>
+
+        <p class="about__values-label" data-i18n="about.values">Ces réflexes me servent aujourd'hui pour</p>
+        <ul class="about__values">
+          <li>
+            <span class="about__value-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></svg>
+            </span>
+            <span data-i18n="about.value1">Comprendre un besoin</span>
+          </li>
+          <li>
+            <span class="about__value-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="m8 2 1.88 1.88" /><path d="M14.12 3.88 16 2" /><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" /><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6" /><path d="M12 20v-9" /><path d="M6.53 9C4.6 8.8 3 7.1 3 5" /><path d="M6 13H2" /><path d="M3 21c0-2.1 1.7-3.9 3.8-4" /><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4" /><path d="M22 13h-4" /><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4" /></svg>
+            </span>
+            <span data-i18n="about.value2">Traquer un bug</span>
+          </li>
+          <li>
+            <span class="about__value-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            </span>
+            <span data-i18n="about.value3">Travailler en équipe</span>
+          </li>
+        </ul>
+
+        <a href="#parcours" class="btn btn--ghost about__cta">
+          <span data-i18n="about.cta">Voir mon parcours</span>
+          <svg class="icon icon-go" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </a>
+      </div>
     </div>
-    <div class="about__stat">
-      <dt class="about__stat-n" data-i18n="about.stat2.n">2 ans</dt>
-      <dd class="about__stat-l" data-i18n="about.stat2.l">des tests logiciels à la conception et développement d'applications</dd>
-    </div>
-    <div class="about__stat about__stat--certs">
-      <dt class="about__stat-n" data-i18n="about.stat3.n">Formations</dt>
-      <dd class="about__stat-l" data-i18n="about.stat3.l1">Diplôme Conceptrice Développeuse d'Applications (2026)</dd>
-      <dd class="about__stat-l" data-i18n="about.stat3.l2">Certification ISTQB Foundation 2025</dd>
-      <dd class="about__stat-l" data-i18n="about.stat3.l3">Diplôme de Testeuse Logiciels 2025</dd>
-    </div>
-  </dl>
+
+    <dl class="about__stats reveal">
+      <div class="about__stat">
+        <dt class="about__stat-n" data-i18n="about.stat1.n">13 ans</dt>
+        <dd class="about__stat-l" data-i18n="about.stat1.l">aide-soignante dans le secteur médico-social</dd>
+      </div>
+      <div class="about__stat">
+        <dt class="about__stat-n" data-i18n="about.stat2.n">2 ans</dt>
+        <dd class="about__stat-l" data-i18n="about.stat2.l">des tests logiciels à la conception et développement d'applications</dd>
+      </div>
+      <div class="about__stat about__stat--certs">
+        <dt class="about__stat-eyebrow" data-i18n="about.stat3.n">Formations</dt>
+        <dd class="about__cert"><span aria-hidden="true">→</span><span data-i18n="about.stat3.l1">Diplôme Conceptrice Développeuse d'Applications (2026)</span></dd>
+        <dd class="about__cert"><span aria-hidden="true">→</span><span data-i18n="about.stat3.l2">Certification ISTQB Foundation 2025</span></dd>
+        <dd class="about__cert"><span aria-hidden="true">→</span><span data-i18n="about.stat3.l3">Diplôme de Testeuse Logiciels 2025</span></dd>
+      </div>
+    </dl>
+  </div>
 </section>

@@ -1,0 +1,118 @@
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--off);
+}
+
+.hero__dots {
+  position: absolute; top: 0; right: 0; width: 62%; height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at 72% 45%, #000 15%, transparent 68%);
+          mask-image: radial-gradient(ellipse at 72% 45%, #000 15%, transparent 68%);
+}
+.hero__dots circle { fill: var(--emerald); fill-opacity: 0.35; }
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3.5rem 2.5rem;
+  padding-block: 2.5rem 6rem;
+}
+
+.hero__text { flex: 1.25 1 520px; min-width: 0; }
+
+.hero__location {
+  display: flex; align-items: center; gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  font: 500 0.78rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--emerald);
+}
+.hero__location::before { content: ''; width: 36px; height: 1.5px; background: var(--emerald); }
+
+.hero__hello {
+  font: 500 clamp(1.4rem, 2.4vw, 1.9rem)/1.2 var(--font-heading);
+  color: var(--muted);
+}
+.hero__name {
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: clamp(3.6rem, 9.4vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  color: var(--forest);
+}
+.hero__name span { color: var(--emerald); }
+
+.hero__role {
+  margin-top: var(--space-8);
+  font: 700 clamp(1.4rem, 2.3vw, 1.9rem)/1.2 var(--font-heading);
+  letter-spacing: -0.02em;
+}
+.hero__signature {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+  margin-top: var(--space-4);
+  font: 500 0.88rem/1.4 var(--font-mono); letter-spacing: 0.04em;
+  color: var(--emerald);
+}
+.hero__signature [aria-hidden] { color: var(--teal); }
+
+.hero__lead { margin-top: 1.9rem; max-width: 560px; font-size: 1.19rem; line-height: 1.55; }
+.hero__lead em { font-style: normal; color: var(--emerald); font-weight: 700; }
+.hero__pitch { margin-top: var(--space-3); max-width: 560px; font-size: 1.06rem; line-height: 1.65; color: var(--muted); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: 2.1rem; }
+
+/* ── Visuel ── */
+.hero__visual { position: relative; flex: 1 1 400px; min-width: 0; padding: 2rem 1.5rem; }
+
+.hero__blob { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__blob-fill { fill: var(--mint); }
+.hero__blob-line { fill: none; stroke: var(--teal); stroke-width: 1.5; stroke-dasharray: 3 7; stroke-linecap: round; }
+
+.hero__frame { position: relative; max-width: 420px; margin-inline: auto; aspect-ratio: 4 / 5; }
+.hero__frame-offset {
+  position: absolute; inset: 0; transform: translate(16px, 16px);
+  border: 1.5px solid var(--emerald); border-radius: var(--blob);
+}
+.hero__photo {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  background: var(--pale); border-radius: var(--blob);
+  animation: hero-unmask 1.2s cubic-bezier(0.7, 0, 0.2, 1) 0.25s both;
+}
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 50%; }
+
+.hero__swoosh {
+  position: absolute; left: -18%; top: -6%; width: 136%; height: 112%;
+  overflow: visible; pointer-events: none;
+}
+.hero__swoosh ellipse { fill: none; stroke: url(#hero-swoosh); stroke-width: 3; stroke-linecap: round; }
+.hero__pixels { position: absolute; top: -5%; right: -3%; width: 68px; height: 68px; }
+
+.hero__chip {
+  position: absolute; margin: 0; padding: 8px 14px; border-radius: 10px;
+  font: 500 0.82rem/1.4 var(--font-mono); color: var(--forest);
+  background: var(--white); border: 1px solid var(--line);
+  box-shadow: 0 10px 20px -12px rgba(7, 59, 58, 0.4);
+}
+.hero__chip span { color: var(--teal); }
+.hero__chip b { color: var(--emerald); font-weight: 500; }
+.hero__chip--a { top: 6%; left: -14px; }
+.hero__chip--b { top: 44%; right: -16px; background: var(--forest); color: var(--mint); border-color: var(--forest); }
+.hero__chip--c { bottom: 7%; left: -8px; }
+
+/* ── Entrée progressive ── */
+@keyframes hero-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes hero-unmask { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+.hero-rise { animation: hero-rise 0.85s var(--ease-out) both; }
+.hero-rise--1 { animation-delay: 0.1s; }
+.hero-rise--2 { animation-delay: 0.25s; }
+.hero-rise--3 { animation-delay: 0.4s; }
+.hero-rise--4 { animation-delay: 0.55s; }
+
+@media (max-width: 640px) {
+  .hero__inner { padding-block: 1.25rem 4rem; gap: 2.5rem; }
+  .hero__chip--a, .hero__chip--c { left: 0; }
+  .hero__chip--b { right: 0; }
+}

@@ -1,157 +1,80 @@
 ---
 import { profile } from '../data/profile';
-import '../styles/hero-intro.css';
+import '../styles/hero.css';
+
+const [firstName, ...rest] = profile.name.split(' ');
+const lastName = rest.join(' ').toUpperCase();
 ---
-<section class="hero play" aria-labelledby="hero-title">
-  <div class="hero__stage">
-    <div class="hero__scene">
-    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
-      <!-- A : le stéthoscope (se pose, puis zoom sur la membrane) -->
-      <g data-a="camA">
-        <g data-a="aWrap">
-          <g data-a="aEnter">
-            <defs>
-              <radialGradient id="hi-chrome" cx="35%" cy="30%" r="85%">
-                <stop offset="0" stop-color="#FAFBFB"></stop>
-                <stop offset="0.55" stop-color="#CFC4BB"></stop>
-                <stop offset="1" stop-color="#968A81"></stop>
-              </radialGradient>
-            </defs>
-            <!-- arceau : deux tubes métalliques en lyre, embouts tournés vers l'intérieur -->
-            <path data-a="ear" d="M520 345 C 500 280, 400 250, 395 160 C 392 125, 410 100, 440 92"></path>
-            <path data-a="ear" d="M520 345 C 540 280, 640 250, 645 160 C 648 125, 630 100, 600 92"></path>
-            <path data-a="earHi" d="M520 345 C 500 280, 400 250, 395 160 C 392 125, 410 100, 440 92"></path>
-            <path data-a="earHi" d="M520 345 C 540 280, 640 250, 645 160 C 648 125, 630 100, 600 92"></path>
-            <path data-a="earGl" d="M517 343 C 497 280, 397 250, 392 160 C 389 126, 408 102, 438 94"></path>
-            <path data-a="earGl" d="M523 343 C 543 280, 643 250, 648 160 C 651 126, 632 102, 602 94"></path>
-            <ellipse data-a="tip" cx="454" cy="89" rx="16" ry="11" transform="rotate(-15 454 89)"></ellipse>
-            <ellipse data-a="tip" cx="586" cy="89" rx="16" ry="11" transform="rotate(15 586 89)"></ellipse>
-            <!-- pièce en Y -->
-            <path data-a="metal" d="M504 336 Q 520 350 536 336 L 530 374 L 510 374 Z"></path>
-            <rect data-a="metal" x="508" y="372" width="24" height="16" rx="5"></rect>
-            <!-- tuyau principal -->
-            <path data-a="tubeShadow" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450" transform="translate(5 9)"></path>
-            <path data-a="tube" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450"></path>
-            <path data-a="tubeHi" d="M520 386 C 515 600, 760 720, 880 560 S 914 480 970 450" transform="translate(-3 -4)"></path>
-            <!-- pied du pavillon -->
-            <path data-a="stemO" d="M970 450 L1018 432"></path>
-            <path data-a="stem" d="M970 450 L1018 432"></path>
-            <rect data-a="metal" x="-16" y="-13" width="32" height="26" rx="7" transform="translate(976 448) rotate(-20)"></rect>
-            <!-- pavillon -->
-            <circle data-a="shadow" cx="1106" cy="412.5" r="90"></circle>
-            <circle data-a="chrome" cx="1100" cy="402.5" r="88"></circle>
-            <circle data-a="rubber" cx="1100" cy="402.5" r="80"></circle>
-            <circle data-a="chromeIn" cx="1100" cy="402.5" r="73"></circle>
-            <circle data-a="membrane" cx="1100" cy="402.5" r="68"></circle>
-            <g data-a="mdetails">
-              <circle data-a="ring" cx="1100" cy="402.5" r="46"></circle>
-              <circle data-a="ring" cx="1100" cy="402.5" r="24"></circle>
-              <path data-a="sheen" d="M1057.4 372.7 A52 52 0 0 1 1086.5 352.3"></path>
-            </g>
-            <circle data-a="rip rip1" cx="1100" cy="402.5" r="88"></circle>
-            <circle data-a="rip rip2" cx="1100" cy="402.5" r="88"></circle>
-          </g>
-        </g>
-      </g>
+<section class="hero" id="accueil" aria-labelledby="hero-title">
+  <svg class="hero__dots" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="hero-dots" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.5" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hero-dots)" />
+  </svg>
 
-      <!-- B : l'écran d'ordinateur (apparaît quand la membrane remplit l'image, puis dézoome) -->
-      <g data-a="monB">
-        <defs>
-          <linearGradient id="hi-desk" x1="0" y1="0" x2="1" y2="0">
-            <stop data-a="gd0" offset="0"></stop>
-            <stop data-a="gd1" offset="0.35"></stop>
-          </linearGradient>
-          <linearGradient id="hi-neck" x1="0" y1="0" x2="1" y2="0">
-            <stop data-a="gn0" offset="0"></stop>
-            <stop data-a="gn1" offset="0.5"></stop>
-            <stop data-a="gn0" offset="1"></stop>
-          </linearGradient>
-        </defs>
-        <circle data-a="halo" cx="1100" cy="402.5" r="340"></circle>
-        <!-- bureau, ombre portée et clavier -->
-        <rect data-a="deskBand" x="560" y="704" width="1040" height="196"></rect>
-        <line data-a="desk" x1="560" y1="704" x2="1600" y2="704"></line>
-        <ellipse data-a="cast" cx="1100" cy="710" rx="200" ry="9"></ellipse>
-        <rect data-a="kbd" x="900" y="722" width="400" height="36" rx="7"></rect>
-        <line data-a="keys" x1="914" y1="731" x2="1286" y2="731"></line>
-        <line data-a="keys" x1="914" y1="741" x2="1286" y2="741"></line>
-        <line data-a="keysBar" x1="990" y1="751" x2="1210" y2="751"></line>
-        <!-- pied -->
-        <path data-a="neck" d="M1074 616 L1126 616 L1140 692 L1060 692 Z"></path>
-        <path data-a="base" d="M960 704 L960 698 Q960 688 972 688 L1228 688 Q1240 688 1240 698 L1240 704 Z"></path>
-        <line data-a="baseHi" x1="976" y1="690" x2="1224" y2="690"></line>
-        <!-- écran : châssis, cadre noir, dalle -->
-        <rect data-a="device" x="772" y="187" width="656" height="431" rx="24"></rect>
-        <path data-a="chassisHi" d="M798 188.5 L1402 188.5"></path>
-        <rect data-a="bezelIn" x="786" y="201" width="628" height="403" rx="12"></rect>
-        <rect data-a="screenBg" x="800" y="215" width="600" height="375" rx="8"></rect>
-        <circle data-a="cam" cx="1100" cy="208" r="3"></circle>
-        <circle data-a="led" cx="1100" cy="611" r="2.5"></circle>
-        <g data-a="scr">
-          <path data-a="bar" d="M800 249 L800 223 A8 8 0 0 1 808 215 L1392 215 A8 8 0 0 1 1400 223 L1400 249 Z"></path>
-          <circle data-a="dot" cx="822" cy="232" r="5"></circle>
-          <circle data-a="dot" cx="840" cy="232" r="5"></circle>
-          <circle data-a="dot" cx="858" cy="232" r="5"></circle>
-          <text data-a="fname" x="1100" y="237" text-anchor="middle">Melanie.cs</text>
-          <rect data-a="hiline" x="800" y="515" width="600" height="25"></rect>
-          <text data-a="gutter" x="818" y="282" text-anchor="end">1</text>
-          <text data-a="gutter" x="818" y="307" text-anchor="end">2</text>
-          <text data-a="gutter" x="818" y="332" text-anchor="end">3</text>
-          <text data-a="gutter" x="818" y="357" text-anchor="end">4</text>
-          <text data-a="gutter" x="818" y="382" text-anchor="end">5</text>
-          <text data-a="gutter" x="818" y="407" text-anchor="end">6</text>
-          <text data-a="gutter" x="818" y="432" text-anchor="end">7</text>
-          <text data-a="gutter" x="818" y="457" text-anchor="end">8</text>
-          <text data-a="gutter" x="818" y="482" text-anchor="end">9</text>
-          <text data-a="gutter" x="818" y="507" text-anchor="end">10</text>
-          <text data-a="gutter" x="818" y="532" text-anchor="end">11</text>
-          <text data-a="ln code" data-l="1" x="828" y="282"><tspan data-a="kw">public class</tspan> <tspan data-a="ty">Melanie</tspan> <tspan data-a="pu">:</tspan> <tspan data-a="ty">IDeveloper</tspan><tspan data-a="pu">,</tspan> <tspan data-a="ty">IQA</tspan></text>
-          <text data-a="ln code" data-l="2" x="828" y="307"><tspan data-a="pu">&#123;</tspan></text>
-          <text data-a="ln code" data-l="3" x="828" y="332">    <tspan data-a="ty">Journey</tspan> before <tspan data-a="pu">=</tspan> <tspan data-a="ty">Journey</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Care</tspan><tspan data-a="pu">;</tspan></text>
-          <text data-a="ln code" data-l="4" x="828" y="357">    <tspan data-a="ty">Journey</tspan> after <tspan data-a="pu">=</tspan> <tspan data-a="ty">Journey</tspan><tspan data-a="pu">.</tspan><tspan data-a="fn">Code</tspan><tspan data-a="pu">;</tspan></text>
-          <text data-a="ln code" data-l="5" x="828" y="407">    <tspan data-a="kw">public async</tspan> <tspan data-a="ty">Task</tspan> <tspan data-a="fn">Transition</tspan><tspan data-a="pu">()</tspan></text>
-          <text data-a="ln code" data-l="6" x="828" y="432">    <tspan data-a="pu">&#123;</tspan></text>
-          <text data-a="ln code" data-l="7" x="828" y="457">        <tspan data-a="kw">await</tspan> before<tspan data-a="pu">.</tspan><tspan data-a="fn">Listen</tspan><tspan data-a="pu">();</tspan></text>
-          <text data-a="ln code" data-l="8" x="828" y="482">        <tspan data-a="kw">await</tspan> after<tspan data-a="pu">.</tspan><tspan data-a="fn">Build</tspan><tspan data-a="pu">();</tspan></text>
-          <text data-a="ln code" data-l="9" x="828" y="507">    <tspan data-a="pu">&#125;</tspan></text>
-          <text data-a="ln code" data-l="10" x="828" y="532"><tspan data-a="pu">&#125;</tspan></text>
-          <g data-a="curWrap"><rect data-a="cursor" x="845" y="518" width="9" height="18"></rect></g>
-          <path data-a="status" d="M800 568 L1400 568 L1400 582 A8 8 0 0 1 1392 590 L808 590 A8 8 0 0 1 800 582 Z"></path>
-          <text data-a="statusTx" x="816" y="583">C#</text>
-          <text data-a="statusTx" x="1384" y="583" text-anchor="end">UTF-8    Ln 11, Col 2</text>
-          <path data-a="glare" d="M800 215 L1030 215 L880 590 L800 590 Z"></path>
-        </g>
-      </g>
-    </svg>
-
-    <button
-      type="button"
-      class="hero__intro-btn"
-      id="hero-intro-btn"
-      data-i18n="hero.intro.skip"
-    >Passer l'intro</button>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <p class="hero__location hero-rise hero-rise--1" data-i18n="hero.location">Nantes et alentours</p>
+      <p class="hero__hello hero-rise hero-rise--1" data-i18n="hero.hello">Bonjour, je suis</p>
+      <h1 id="hero-title" class="hero__name hero-rise hero-rise--2">{firstName} <span>{lastName}</span></h1>
+      <p class="hero__role hero-rise hero-rise--3" data-i18n="hero.role">Testeuse Logiciel &amp; Développeuse</p>
+      <p class="hero__signature hero-rise hero-rise--3">
+        <span data-i18n="hero.sig1">Tester</span><span aria-hidden="true">·</span><span data-i18n="hero.sig2">Développer</span><span aria-hidden="true">·</span><span data-i18n="hero.sig3">Innover</span>
+      </p>
+      <p class="hero__lead hero-rise hero-rise--4" data-i18n-html="hero.lead">J'ai pris soin des gens pendant 13&nbsp;ans. Aujourd'hui, je prends soin du <em>code</em>.</p>
+      <p class="hero__pitch hero-rise hero-rise--4" data-i18n="hero.pitch">{profile.pitch}</p>
+      <div class="hero__actions hero-rise hero-rise--4">
+        <a href="#projets" class="btn btn--primary">
+          <span data-i18n="hero.cta.projects">Voir mes projets</span>
+          <svg class="icon icon-go" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </a>
+        <a href="#contact" class="btn btn--ghost" data-i18n="hero.cta.contact">Me contacter</a>
+      </div>
     </div>
 
-    <div class="hero__content">
-      <p class="hero__eyebrow hi-rise hi-r1" data-i18n="hero.location">Nantes et alentours</p>
-      <h1 id="hero-title" class="hero__name hi-rise hi-r2">{profile.name}</h1>
-      <p class="hero__lead hi-rise hi-r2" data-i18n-html="hero.lead">J'ai pris soin des gens pendant 13 ans. Aujourd'hui, je prends soin du <em>code</em>.</p>
-      <p class="hero__headline hi-rise hi-r3" data-i18n="hero.headline">{profile.headline}</p>
-      <p class="hero__pitch hi-rise hi-r3" data-i18n="hero.pitch">{profile.pitch}</p>
-      <div class="hero__actions hi-rise hi-r4">
-        <a href="#parcours" class="btn btn--primary" data-i18n="hero.cta">Découvrir mon parcours</a>
-        <a
-          href={profile.linkedin}
-          class="btn btn--ghost"
-          rel="noopener noreferrer"
-          target="_blank"
-          aria-label="Voir le profil LinkedIn de Mélanie Roy"
-        >LinkedIn</a>
+    <div class="hero__visual">
+      <svg class="hero__blob" viewBox="0 0 500 580" aria-hidden="true" focusable="false">
+        <path class="hero__blob-fill" d="M130 70 C230 -8 410 20 460 150 C510 270 450 440 335 500 C220 560 80 520 40 395 C0 270 28 130 130 70 Z" />
+        <path class="hero__blob-line" d="M150 90 C240 28 392 46 440 160 C488 270 434 420 330 476 C226 530 100 494 64 384 C28 274 54 148 150 90 Z" />
+      </svg>
+
+      <div class="hero__frame">
+        <div class="hero__frame-offset" aria-hidden="true"></div>
+        <div class="hero__photo">
+          <img
+            src="/images/hero-desk.jpg"
+            alt="Ordinateur portable affichant du code HTML et CSS sur un bureau lumineux"
+            width="1600"
+            height="1065"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+
+        <svg class="hero__swoosh" viewBox="0 0 400 500" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="hero-swoosh" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#087F6B" />
+              <stop offset="0.55" stop-color="#12A99A" />
+              <stop offset="1" stop-color="#12A99A" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="200" cy="250" rx="228" ry="104" transform="rotate(-26 200 250)" />
+        </svg>
+        <svg class="hero__pixels" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
+          <rect x="20" y="22" width="14" height="14" fill="#087F6B" />
+          <rect x="40" y="8" width="9" height="9" fill="#12A99A" />
+          <rect x="6" y="40" width="10" height="10" fill="#B8E8DD" />
+          <rect x="42" y="32" width="7" height="7" fill="#B8E8DD" />
+        </svg>
+
+        <p class="hero__chip hero__chip--a" aria-hidden="true"><span>&#123;</span> tester <span>&#125;</span></p>
+        <p class="hero__chip hero__chip--b" aria-hidden="true">&lt;/&gt; développer</p>
+        <p class="hero__chip hero__chip--c" aria-hidden="true">innover<span>()</span><b>_</b></p>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  import '../scripts/hero-intro';
-</script>
