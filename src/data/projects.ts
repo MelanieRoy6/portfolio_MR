@@ -38,7 +38,7 @@ export const projects: Project[] = [
     description:
       "Pendant un an, j'ai travaillé sur l'application CANAL+ en C#/XAML (UWP) : développement de fonctionnalités, tests automatisés de bout en bout et tests unitaires intégrés à la CI.",
     role: 'Développement et tests',
-    tech: ['C#', 'XAML', 'UWP', 'Playwright', 'FlaUI', 'MSTest', 'Vitest', 'CI/CD'],
+    tech: ['C#', 'XAML', 'UWP', 'FlaUI', 'MSTest', 'CI/CD'],
     categories: ['entreprise'],
     en: {
       name: 'CANAL+ application (UWP)',
@@ -53,14 +53,14 @@ export const projects: Project[] = [
     name: 'Stargazer',
     context: 'Alternance · UCAYA',
     description:
-      "Tests automatisés avec Playwright, création d'un outil de gestion de tests sur Notion et développement d'une nouvelle fonctionnalité.",
+      "Application de présentation multi-écrans pour des showrooms. J'y ai mis en place des tests automatisés (Playwright) et des tests unitaires (Vitest), créé un outil de gestion de tests sur Notion et développé une nouvelle fonctionnalité.",
     role: 'Tests et développement',
-    tech: ['Playwright', 'TypeScript', 'Notion'],
+    tech: ['Playwright', 'Vitest', 'TypeScript', 'Notion'],
     categories: ['entreprise'],
     en: {
       context: 'Work-study · UCAYA',
       description:
-        'Automated tests with Playwright, a test management tool built on Notion, and development of a new feature.',
+        'A multi-screen presentation app for showrooms. I set up automated tests (Playwright) and unit tests (Vitest), built a test management tool on Notion and developed a new feature.',
       role: 'Testing and development',
     },
   },
