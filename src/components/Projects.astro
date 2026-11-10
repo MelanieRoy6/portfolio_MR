@@ -47,8 +47,8 @@ const hasProjects = projects.length > 0;
                 {p.images && p.images.length > 0 ? (
                   <ul class="carousel__track" role="list" tabindex="0" aria-label={`Captures : ${p.name}`} data-fr-aria={`Captures : ${p.name}`}>
                     {p.images.slice(0, 3).map((im, ii) => (
-                      <li class="carousel__slide" aria-roledescription="slide" aria-label={`${ii + 1} / ${Math.min(p.images!.length, 3)}`}>
-                        <img class={`carousel__img${im.fit === 'contain' ? ' is-contain' : ''}`} src={im.src} alt={im.alt} loading={i === 0 && ii === 0 ? 'eager' : 'lazy'} decoding="async" width="1280" height="800" />
+                      <li class={`carousel__slide${im.fit === 'contain-dark' ? ' is-dark' : ''}`} aria-roledescription="slide" aria-label={`${ii + 1} / ${Math.min(p.images!.length, 3)}`}>
+                        <img class={`carousel__img${im.fit === 'contain' ? ' is-contain' : im.fit === 'contain-dark' ? ' is-contain is-dark' : ''}`} src={im.src} alt={im.alt} loading={i === 0 && ii === 0 ? 'eager' : 'lazy'} decoding="async" width="1280" height="800" />
                       </li>
                     ))}
                   </ul>
@@ -56,7 +56,7 @@ const hasProjects = projects.length > 0;
                   <div class="project-card__pattern" aria-hidden="true"></div>
                 )}
                 <p class="project-card__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
-                {p.logo && <img class="project-card__logo" src={p.logo.src} alt={p.logo.alt} width="56" height="56" loading="lazy" decoding="async" />}
+                {p.logo && <img class={`project-card__logo${p.logo.wide ? ' is-wide' : ''}`} src={p.logo.src} alt={p.logo.alt} width="56" height="56" loading="lazy" decoding="async" />}
                 {p.images && p.images.length > 1 && (
                   <div class="carousel__ui">
                     <button type="button" class="carousel__btn" data-dir="-1" aria-label="Image précédente">

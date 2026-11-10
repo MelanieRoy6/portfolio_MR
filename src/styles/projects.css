@@ -95,3 +95,5 @@
 @media (prefers-reduced-motion: reduce) { .carousel__track { scroll-behavior: auto; } }
 .project-card__index { z-index: 1; padding: 0.25rem 0.6rem; border-radius: 10px; background: color-mix(in srgb, var(--forest) 82%, transparent); font-size: 1.1rem; }
 .project-card__logo { z-index: 1; }
+.carousel__slide.is-dark { background: var(--forest-3); }
+.project-card__logo.is-wide { width: auto; height: 34px; padding: 0; border-radius: 6px; }

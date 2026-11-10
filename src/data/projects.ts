@@ -25,9 +25,9 @@ export interface Project {
   tech: string[];
   categories: ProjectCategory[];
   /** Logo du projet (petite vignette sur la carte) */
-  logo?: { src: string; alt: string };
+  logo?: { src: string; alt: string; wide?: boolean };
   /** 3 images maximum */
-  images?: { src: string; alt: string; fit?: 'cover' | 'contain' }[];
+  images?: { src: string; alt: string; fit?: 'cover' | 'contain' | 'contain-dark' }[];
   links?: ProjectLink[];
   en?: { name?: string; description?: string; role?: string; context?: string };
 }
@@ -42,6 +42,11 @@ export const projects: Project[] = [
     role: 'Développement et tests',
     tech: ['C#', 'XAML', 'UWP', 'FlaUI', 'MSTest', 'CI/CD'],
     categories: ['entreprise'],
+    logo: { src: '/projects/canal-logo.png', alt: 'Logo CANAL+', wide: true },
+    images: [
+      { src: '/projects/canal-accueil-tv.jpg', alt: "Page d'accueil de l'application myCANAL sur grand écran : bandeau de films et reprise de lecture", fit: 'contain-dark' },
+      { src: '/projects/canal-accueil-mobile.jpg', alt: "Page d'accueil de l'application CANAL+ sur petit écran : bandeau, catégories Cinéma, Séries, Sport et reprise de lecture", fit: 'contain-dark' },
+    ],
     en: {
       name: 'CANAL+ application (UWP)',
       context: 'Work-study · UCAYA · 1 year',
