@@ -2,6 +2,7 @@ import { i18n, type Lang } from '../i18n/translations';
 
 const buttons = document.querySelectorAll<HTMLButtonElement>('.projects__filter');
 const cards = document.querySelectorAll<HTMLElement>('.project-card');
+const none = document.getElementById('projects-none');
 const status = document.getElementById('projects-status');
 
 buttons.forEach((btn) => {
@@ -14,6 +15,7 @@ buttons.forEach((btn) => {
       card.hidden = !match;
       if (match) shown++;
     });
+    if (none) none.hidden = shown > 0;
     if (status) {
       const lang = (document.documentElement.lang === 'en' ? 'en' : 'fr') as Lang;
       status.textContent = `${shown} ${i18n[lang]['projects.count']}`;

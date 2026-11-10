@@ -23,6 +23,11 @@ function applyLang(lang: Lang): void {
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
 
+  document.querySelectorAll<HTMLElement>('.carousel__btn').forEach((b) => {
+    const next = b.dataset.dir === '1';
+    b.setAttribute('aria-label', lang === 'en' ? (next ? 'Next image' : 'Previous image') : (next ? 'Image suivante' : 'Image précédente'));
+  });
+
   // Projects (data-fr / data-en)
   document.querySelectorAll<HTMLElement>('[data-fr][data-en]').forEach((el) => {
     const v = lang === 'en' ? el.dataset.en : el.dataset.fr;
