@@ -77,4 +77,25 @@ export const projects: Project[] = [
       role: 'Testing and development',
     },
   },
+  {
+    id: 'bigorneaux-party',
+    name: 'Bigorneaux Party',
+    context: 'Site web',
+    description:
+      "Site d'un événement annuel entre amis, à l'esprit déjanté : olympiades, muscadet et célèbre crachat de bigorneau. Pages publiques (présentation, FAQ, formulaire d'inscription) et espace réservé aux organisateurs avec connexion, pour gérer l'événement. Design responsive, pensé pour le smartphone.",
+    role: 'Conception, design et développement',
+    tech: ['Angular', 'TypeScript', 'Supabase', 'Brevo'],
+    categories: ['perso'],
+    images: [
+      { src: '/projects/bigorneaux-accueil.jpg', alt: "Page d'accueil du site Bigorneaux Party : affiche illustrée du passage du Gois, date et lieu de l'événement", fit: 'contain' },
+      { src: '/projects/bigorneaux-faq.jpg', alt: 'Page FAQ du site, sur fond orange, avec une mascotte escargot qui réfléchit', fit: 'contain' },
+      { src: '/projects/bigorneaux-inscription.jpg', alt: "Formulaire d'inscription à l'événement avec la mascotte escargot", fit: 'contain' },
+    ],
+    en: {
+      context: 'Website',
+      description:
+        'Website for a quirky annual get-together among friends: games, local wine and the famous winkle-spitting contest. Public pages (presentation, FAQ, sign-up form) and an organisers-only area with login to run the event. Responsive, designed with smartphones in mind.',
+      role: 'Concept, design and development',
+    },
+  },
 ];
