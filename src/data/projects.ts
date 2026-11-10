@@ -27,7 +27,7 @@ export interface Project {
   /** Logo du projet (petite vignette sur la carte) */
   logo?: { src: string; alt: string };
   /** 3 images maximum */
-  images?: { src: string; alt: string }[];
+  images?: { src: string; alt: string; fit?: 'cover' | 'contain' }[];
   links?: ProjectLink[];
   en?: { name?: string; description?: string; role?: string; context?: string };
 }
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     images: [
       { src: '/projects/stargazer-showroom.jpg', alt: 'Salle showroom équipée de plusieurs écrans qui diffusent une présentation' },
       { src: '/projects/stargazer-resultats.jpg', alt: 'Tableau de bord Notion des résultats de campagnes de tests : répartition des statuts et tickets par catégorie' },
-      { src: '/projects/stargazer-test-management.jpg', alt: 'Page d’accueil de l’outil de gestion de tests sur Notion : cas de tests, campagnes, résultats, bugs et rapports' },
+      { src: '/projects/stargazer-test-management.jpg', fit: 'contain', alt: 'Page d’accueil de l’outil de gestion de tests sur Notion : cas de tests, campagnes, résultats, bugs et rapports' },
     ],
     en: {
       context: 'Work-study · UCAYA',
