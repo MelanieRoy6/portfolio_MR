@@ -86,6 +86,7 @@ export const projects: Project[] = [
     role: 'Conception, design et développement',
     tech: ['Angular', 'TypeScript', 'Supabase', 'Brevo'],
     categories: ['perso'],
+    links: [{ label: 'Voir le site', url: 'https://bigorneau-party.vercel.app/' }],
     images: [
       { src: '/projects/bigorneaux-accueil.jpg', alt: "Page d'accueil du site Bigorneaux Party : affiche illustrée du passage du Gois, date et lieu de l'événement", fit: 'contain' },
       { src: '/projects/bigorneaux-faq.jpg', alt: 'Page FAQ du site, sur fond orange, avec une mascotte escargot qui réfléchit', fit: 'contain' },
