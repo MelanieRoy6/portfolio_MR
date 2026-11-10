@@ -99,4 +99,28 @@ export const projects: Project[] = [
       role: 'Concept, design and development',
     },
   },
+  {
+    id: 'art-eric',
+    name: 'Site vitrine d’un artiste peintre',
+    context: 'Site web · FR / EN',
+    description:
+      "Site vitrine pour un artiste peintre franco-américain : accueil avec ses toiles, galerie d'œuvres, biographie et contact. Site bilingue, avec une identité typographique élégante et des animations soignées.",
+    role: 'Conception, design et développement',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    categories: ['perso'],
+    links: [{ label: 'Voir le site', url: 'https://art-eric.vercel.app/' }],
+    logo: { src: '/projects/eric-logo.png', alt: 'Logo Eric Roy — Abstract Art' },
+    images: [
+      { src: '/projects/eric-accueil.jpg', alt: "Page d'accueil du site : titre « From France to America, abstraction as the only homeland » et une toile colorée accrochée au mur", fit: 'contain' },
+      { src: '/projects/eric-galerie.jpg', alt: "Galerie d'œuvres : trois toiles abstraites avec leur titre et leur technique", fit: 'contain' },
+      { src: '/projects/eric-biographie.jpg', alt: "Page biographie : portrait en noir et blanc de l'artiste et texte de présentation", fit: 'contain' },
+    ],
+    en: {
+      name: 'Showcase website for a painter',
+      context: 'Website · FR / EN',
+      description:
+        'Showcase website for a Franco-American painter: a home page with his canvases, a gallery of works, a biography and a contact page. Bilingual, with an elegant typographic identity and polished animations.',
+      role: 'Concept, design and development',
+    },
+  },
 ];
