@@ -24,6 +24,8 @@ export interface Project {
   role?: string;
   tech: string[];
   categories: ProjectCategory[];
+  /** Logo du projet (petite vignette sur la carte) */
+  logo?: { src: string; alt: string };
   /** 3 images maximum */
   images?: { src: string; alt: string }[];
   links?: ProjectLink[];
@@ -57,6 +59,12 @@ export const projects: Project[] = [
     role: 'Tests et développement',
     tech: ['Playwright', 'Vitest', 'TypeScript', 'Notion'],
     categories: ['entreprise'],
+    logo: { src: '/projects/stargazer-logo.png', alt: 'Logo Stargazer' },
+    images: [
+      { src: '/projects/stargazer-showroom.jpg', alt: 'Salle showroom équipée de plusieurs écrans qui diffusent une présentation' },
+      { src: '/projects/stargazer-resultats.jpg', alt: 'Tableau de bord Notion des résultats de campagnes de tests : répartition des statuts et tickets par catégorie' },
+      { src: '/projects/stargazer-test-management.jpg', alt: 'Page d’accueil de l’outil de gestion de tests sur Notion : cas de tests, campagnes, résultats, bugs et rapports' },
+    ],
     en: {
       context: 'Work-study · UCAYA',
       description:
