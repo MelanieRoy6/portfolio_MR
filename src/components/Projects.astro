@@ -5,19 +5,13 @@ import '../styles/projects.css';
 
 const filters: { id: 'all' | ProjectCategory; label: string; i18n: string }[] = [
   { id: 'all', label: 'Tous', i18n: 'projects.filter.all' },
-  { id: 'dev', label: 'Développement', i18n: 'projects.filter.dev' },
-  { id: 'tests', label: 'Tests logiciels', i18n: 'projects.filter.tests' },
-  { id: 'auto', label: 'Automatisation', i18n: 'projects.filter.auto' },
+  { id: 'entreprise', label: 'En entreprise', i18n: 'projects.filter.entreprise' },
+  { id: 'perso', label: 'Projets perso', i18n: 'projects.filter.perso' },
 ];
 const categoryLabels: Record<ProjectCategory, { fr: string; i18n: string }> = {
-  dev: { fr: 'Développement', i18n: 'projects.filter.dev' },
-  tests: { fr: 'Tests logiciels', i18n: 'projects.filter.tests' },
-  auto: { fr: 'Automatisation', i18n: 'projects.filter.auto' },
+  entreprise: { fr: 'En entreprise', i18n: 'projects.filter.entreprise' },
+  perso: { fr: 'Projet perso', i18n: 'projects.cat.perso' },
 };
-// Un filtre n'est proposé que s'il correspond à au moins un projet.
-const usedFilters = filters.filter(
-  (f) => f.id === 'all' || projects.some((p) => p.categories.includes(f.id as ProjectCategory)),
-);
 const spans = ['7', '5', '5', '7'];
 const hasProjects = projects.length > 0;
 ---
@@ -29,9 +23,9 @@ const hasProjects = projects.length > 0;
         <h2 id="projects-title" class="section-title" data-i18n="projects.title">Projets</h2>
       </div>
 
-      {hasProjects && usedFilters.length > 2 && (
+      {hasProjects && (
         <div class="projects__filters" role="group" aria-label="Filtrer les projets">
-          {usedFilters.map((f) => (
+          {filters.map((f) => (
             <button type="button" class="projects__filter" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'} data-i18n={f.i18n}>{f.label}</button>
           ))}
         </div>
@@ -41,6 +35,7 @@ const hasProjects = projects.length > 0;
     {hasProjects ? (
       <>
         <p class="sr-only" role="status" aria-live="polite" id="projects-status"></p>
+        <p class="projects__none" id="projects-none" hidden data-i18n="projects.filter.none">Projets perso à venir bientôt.</p>
         <div class="projects__grid">
           {projects.map((p, i) => (
             <article
@@ -48,13 +43,31 @@ const hasProjects = projects.length > 0;
               data-span={spans[i % spans.length]}
               data-categories={p.categories.join(' ')}
             >
-              <div class="project-card__cover">
-                {p.image ? (
-                  <img class="project-card__img" src={p.image.src} alt={p.image.alt} loading="lazy" decoding="async" width="1280" height="800" />
+              <div class="project-card__cover" data-carousel>
+                {p.images && p.images.length > 0 ? (
+                  <ul class="carousel__track" role="list" tabindex="0" aria-label={`Captures : ${p.name}`} data-fr-aria={`Captures : ${p.name}`}>
+                    {p.images.slice(0, 3).map((im, ii) => (
+                      <li class={`carousel__slide${im.fit === 'contain-dark' ? ' is-dark' : ''}`} aria-roledescription="slide" aria-label={`${ii + 1} / ${Math.min(p.images!.length, 3)}`}>
+                        <img class={`carousel__img${im.fit === 'contain' ? ' is-contain' : im.fit === 'contain-dark' ? ' is-contain is-dark' : ''}`} src={im.src} alt={im.alt} loading={i === 0 && ii === 0 ? 'eager' : 'lazy'} decoding="async" width="1280" height="800" />
+                      </li>
+                    ))}
+                  </ul>
                 ) : (
                   <div class="project-card__pattern" aria-hidden="true"></div>
                 )}
                 <p class="project-card__index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
+                {p.logo && <img class={`project-card__logo${p.logo.wide ? ' is-wide' : ''}`} src={p.logo.src} alt={p.logo.alt} width="56" height="56" loading="lazy" decoding="async" />}
+                {p.images && p.images.length > 1 && (
+                  <div class="carousel__ui">
+                    <button type="button" class="carousel__btn" data-dir="-1" aria-label="Image précédente">
+                      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6" /></svg>
+                    </button>
+                    <p class="carousel__count" aria-live="polite"><span data-current>1</span> / {Math.min(p.images.length, 3)}</p>
+                    <button type="button" class="carousel__btn" data-dir="1" aria-label="Image suivante">
+                      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg>
+                    </button>
+                  </div>
+                )}
               </div>
               <div class="project-card__body">
                 <p class="project-card__cats">
@@ -62,6 +75,7 @@ const hasProjects = projects.length > 0;
                     <>{ci > 0 && ' · '}<span data-i18n={categoryLabels[c].i18n}>{categoryLabels[c].fr}</span></>
                   ))}
                 </p>
+                {p.context && <p class="project-card__context" data-fr={p.context} data-en={p.en?.context ?? p.context}>{p.context}</p>}
                 <h3 class="project-card__name" data-fr={p.name} data-en={p.en?.name ?? p.name}>{p.name}</h3>
                 <p class="project-card__desc" data-fr={p.description} data-en={p.en?.description ?? p.description}>{p.description}</p>
                 <p class="project-card__meta">
@@ -96,5 +110,6 @@ const hasProjects = projects.length > 0;
 {hasProjects && (
   <script>
     import '../scripts/projects-filter';
+    import '../scripts/carousel';
   </script>
 )}
